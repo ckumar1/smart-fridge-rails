@@ -7,7 +7,7 @@ SmartFridgeRails::Application.routes.draw do
   root 'static_pages#home'
 
 
-  # Clearance encpoints available for rerouting if needed
+  # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
 
   #resources :passwords,
