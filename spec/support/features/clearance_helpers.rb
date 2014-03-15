@@ -26,7 +26,7 @@ module Features
       page.should have_content I18n.t('layouts.application.sign_out')
     end
 
-    def sign_out                                        x8
+    def sign_out
       click_link I18n.t('layouts.application.sign_out')
     end
 
