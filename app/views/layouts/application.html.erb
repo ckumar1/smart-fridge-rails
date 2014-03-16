@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SmartFridgeRails</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
 
-<%= yield %>
 
-</body>
+    <title><%= content_for?(:title) ? "Smart Fridge | " + yield(:title) : "Smart Fridge" %></title>
+
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+
+    <%= yield(:head) %>
+
+  </head>
+  <body>
+    <div id="container">
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+
+    </div>
+  </body>
 </html>
