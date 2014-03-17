@@ -2,16 +2,17 @@ require 'spec_helper'
 
 describe User do
 
-  it 'has a valid factory' do
-    create(:user).should be_valid
+
+  it 'has a new valid factory' do
+    expect( create :user ).to be_valid
   end
 
   it 'is invalid without a name' do
-    build(:user, name: nil).should_not be_valid
+    expect( build :user, name: nil ).to_not be_valid
   end
 
   it 'is invalid without an email' do
-    build(:user, email: nil).should_not be_valid
+    expect( build :user, email: nil ).to_not be_valid
   end
 
 end
