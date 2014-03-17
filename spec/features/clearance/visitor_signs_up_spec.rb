@@ -10,6 +10,8 @@ feature 'Visitor signs up' do
   end
 
   scenario 'with valid email and password' do
+
+    # TODO need to add field for name to sign up Form
     sign_up_with 'valid@example.com', 'password'
 
     user_should_be_signed_in

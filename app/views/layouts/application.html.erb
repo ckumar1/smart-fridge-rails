@@ -21,7 +21,9 @@
       <% end %>
 
       <%= content_tag :h1, yield(:title) if show_title? %>
+
       <%= render :partial => 'layouts/sign_in_state'%>
+
       <%= yield %>
 
     </div>
