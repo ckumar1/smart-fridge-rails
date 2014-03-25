@@ -230,7 +230,9 @@ a.pull-left {
     
 }
 
-.scrollable-list{
+.scrollable-list,
+.scrollable-list.recipe-list,
+.scrollable-list.food-list{
   overflow: scroll;
   height: 400px;
 

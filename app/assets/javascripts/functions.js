@@ -17,8 +17,10 @@ $(document).ready(function() {
 		 $(this).parent().addClass('active');
 		 
 		 //initContainerHeight();
+
 	});
-	
+
+
 });
 
 function initContainerHeight() {
