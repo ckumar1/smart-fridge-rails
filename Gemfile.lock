@@ -114,6 +114,8 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     listen (2.7.1)
       celluloid (>= 0.15.2)
@@ -250,6 +252,7 @@ DEPENDENCIES
   guard-spork
   jbuilder
   jquery-rails
+  jquery-ui-rails
   nifty-generators
   pg (= 0.15.1)
   rails (= 4.0.3)
