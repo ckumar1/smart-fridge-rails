@@ -8,6 +8,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'clearance'
+gem 'rake'
 
 gem "nifty-generators", :group => :development
 
