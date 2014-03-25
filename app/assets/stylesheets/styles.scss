@@ -1,0 +1,225 @@
+// customize bootstrap variables here:
+@import "variables";
+@import "bootstrap";
+
+$main-color: #96D6D9;
+$active-state-color: #4FAAC9;
+$login-height: 600px;
+
+/************************************************
+Mixin Declarations
+*************************************************/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($time) {
+  -webkit-transition: $time;
+     -moz-transition: $time;
+      -ms-transition: $time;
+          transition: $time;
+}
+
+@mixin border-bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+     -moz-border-bottom-right-radius: $radius;
+      -ms-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+}
+
+@mixin border-bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+     -moz-border-bottom-left-radius: $radius;
+      -ms-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+}
+
+.box-shadow {
+	@include box-shadow(#000 5px 5px 5px);
+}
+/************************************************
+Global changes
+*************************************************/
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+	background-size:1170px 100%;
+}
+body {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background-image:url('../assets/crossword.png');
+}
+.section {
+	height: $login-height;
+	width:75%;
+	padding-left: 25%;
+}
+/************************************************
+navbar changes
+*************************************************/
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #FFFFFF;
+	background-color: $active-state-color;
+}
+
+.navbar-default .navbar-nav li > a {
+	color: #FFFFFF;
+}
+.navbar-default .navbar-brand {
+	color: #FFFFFF;
+}
+
+.navbar {
+	background-color: $main-color;
+	@include border-radius(0px);
+	@include box-shadow(rgba(34,34,34,0.4) 0px 0px 4px);
+}
+
+
+.dropdown-menu {
+    background-color: $main-color;
+}
+
+.navbar-brand {
+	float: left;
+	padding: 8px 10px;
+	font-size: 18px;
+	line-height: 20px;
+	height: 50px;
+}
+
+.navbar-brand.dark,
+.navbar-brand.dark:not(:hover)
+{
+	background-color: $active-state-color;
+	@include transition(.3s);
+}
+.navbar-brand.dark:hover{
+	background-color: $main-color;
+	@include transition(.3s);
+}
+
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+	background-color: $active-state-color;
+	color: #FFFFFF;
+}
+.navbar-default{
+    border: none;
+}
+/* main content changes */
+
+.header-content{
+	height: 100%;
+}
+
+.lineoooo {
+	background-color:$active-state-color;
+	margin: 0px 0px 0px auto;
+	width: 100%;
+	height: 5px;
+}
+
+/************************************************
+Login.html changes
+*************************************************/
+.service {
+	margin-top: 60px;
+}
+a.pull-left {
+	color: #777;
+} 
+.fa-border.manageFood {
+	padding: .3em .45em .15em;
+	border: solid 0.08em #dddddd;
+	border-radius: .2em;
+	margin-top:1px;
+}
+.media-heading.choose-question{
+	margin-top: 10px;
+	font-weight:bold;
+}
+.sidebar.col-md-4{
+	margin-top: 0px;
+	height: $login-height;
+}
+
+.form-horizontal {
+	margin-top: 10px;
+	margin-left: 12px;
+    width: 116%;
+}
+.form-control {
+	width: 100%;
+	color: #222;
+}
+.col-sm-offset-2.col-sm-10.checkbox,
+.col-sm-offset-2.col-sm-10.signin {
+	margin-left: 0.67%;
+	margin-bottom: 0.67%;
+}
+.formdivider.divider{
+	background-color: #eee;
+	height: 1px;
+	margin-top: 30px;
+}
+.loginText {
+	padding-top: 20px;
+	padding-left: 10px;
+}
+.sidebar-box{
+	 @include box-shadow(rgba(34,34,34,0.5) 0px 2px 2px);
+}
+.sidebar-box.sidebar-header{
+	background-color: #ccc;
+	padding: 10px 20px 10px 20px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #444;
+}
+.input-group-addon .fa{
+	width: 26px;
+}
+.input-group-addon.emailbox,
+.input-group-addon.passwordbox{
+	background-color: #ccc;
+	color: #222;
+}
+.input-group .form-control {
+	height: 50px;
+}
+.sidebar-box.sidebar-info {
+	float: left;
+    background-color: rgba(224,224,224,0.3);
+    opacity: 0.7;
+    padding: 24px 12px 24px 12px;
+    @include border-bottom-right-radius(4px);
+    @include border-bottom-left-radius(4px);
+
+    
+}
+/************************************************
+footer changes
+*************************************************/
+.footer {
+ 	clear: both;
+ 	position: relative;
+ 	z-index: 10;
+	height: 3em;
+ 	background-color: $main-color;
+ 	@include box-shadow(rgba(34,34,34,0.4) 0px 0px 4px);
+}
+.nav.nav-tabs{
+	margin-top: 24px;
+}
