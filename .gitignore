@@ -45,3 +45,6 @@ config/secrets.yml
 .rvmrc
 
 .keep
+
+# mac .DS_Store
+.DS_Store
