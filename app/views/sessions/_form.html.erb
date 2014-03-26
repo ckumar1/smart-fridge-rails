@@ -25,7 +25,9 @@
             </div>
             <div class="form-group">
               <div class="col-sm-10">
-                <%= form.submit :Login, :class => 'btn btn-default', :style => 'float: left;',:placeholder => 'Sign In'%>
+                <%= form.submit :Login, :class => 'btn btn-default loginbut', :style => 'float: left;'%>
+                <%= link_to t('.sign_up') , sign_up_path, :class => 'btn btn-default loginbut', :style => 'float: left; margin-left: 10px;'%>
+                <%= link_to t('.forgot_password'), new_password_path, :style => 'float: left; margin: 12px 5px 5px 10px;' %>
                <!-- <button type="submit" class="btn btn-default" style=" float: left;">Sign in</button>
                 <button type="submit" class="btn btn-default" style=" float: left; margin-left: 10px;">Create Account</button>
                 -->
@@ -43,10 +45,4 @@
 
     </div>
 
-  <div class='other-links'>
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t('.sign_up'), sign_up_path %>
-    <% end %>
-    <%= link_to t('.forgot_password'), new_password_path %>
-  </div>
 <% end %>
