@@ -56,3 +56,7 @@ config/secrets.yml
 .rvmrc
 
 .keep
+
+# ignore assets components
+# vendor/assets/components
+
