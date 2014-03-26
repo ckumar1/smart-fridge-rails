@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
   end
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
-=======
->>>>>>> master
+#=======
+#>>>>>>> master
   def help
   end
 end
