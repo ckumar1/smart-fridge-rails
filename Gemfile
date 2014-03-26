@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.0.3'
 gem 'bootstrap-sass'
@@ -8,8 +9,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'clearance'
 
-
-
+gem 'sprockets'
 
 gem "nifty-generators", :group => :development
 
@@ -20,7 +20,6 @@ group :development, :test do
   # The following optional lines are part of the advanced setup.
   gem 'guard-rspec'
   gem 'spork-rails'
-  gem 'sprockets'
   gem 'guard-spork'
   gem 'childprocess'
 end
@@ -39,11 +38,11 @@ group :test do
   # gem 'libnotify', '0.8.0'
 
   # Uncomment these lines on Windows.
-  # gem 'rb-notifu', '0.0.4'
-  # gem 'win32console', '1.3.2'
-  # gem 'wdm', '0.1.0'
+  gem 'rb-notifu', '0.0.4'
+  gem 'wdm', '0.1.0'
 end
 
+gem 'execjs'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -57,6 +56,7 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'sprockets_better_errors'
 end
