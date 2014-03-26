@@ -10,8 +10,11 @@ gem 'bootstrap-will_paginate'
 gem 'clearance'
 gem 'rake'
 
+<<<<<<< HEAD
+=======
 # Use postgress in all env
 gem 'pg'
+>>>>>>> FETCH_HEAD
 
 gem "nifty-generators", :group => :development
 
@@ -22,7 +25,7 @@ group :development, :test do
   # The following optional lines are part of the advanced setup.
   gem 'guard-rspec'
   gem 'spork-rails'
-  gem 'sprockets'
+  gem 'sprockets', '2.11.0'
   gem 'guard-spork'
   gem 'childprocess'
 end
@@ -51,6 +54,9 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'font-awesome-sass'
+gem 'font-awesome-rails'
+gem 'simple_form'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
