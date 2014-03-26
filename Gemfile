@@ -10,12 +10,17 @@ gem 'bootstrap-will_paginate'
 gem 'clearance'
 gem 'rake'
 
+<<<<<<< HEAD
+=======
+# Use postgress in all env
+gem 'pg'
+>>>>>>> FETCH_HEAD
 
 gem "nifty-generators", :group => :development
 
 
 group :development, :test do
-  gem 'sqlite3'
+  #gem 'sqlite3'
   gem 'rspec-rails'
   # The following optional lines are part of the advanced setup.
   gem 'guard-rspec'
@@ -59,6 +64,5 @@ group :doc do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end

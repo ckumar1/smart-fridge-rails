@@ -5,7 +5,7 @@ describe "Static pages" do
   describe "Home page" do
 
     it "should have the content 'Smart Fridge'" do
-      visit '/static_pages/home'
+      visit root_url
       expect(page).to have_content('Smart Fridge')
     end
 
