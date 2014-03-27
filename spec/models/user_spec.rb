@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe User do
 
-
   it 'has a new valid factory' do
     expect( create :user ).to be_valid
   end
