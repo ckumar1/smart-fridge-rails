@@ -13,6 +13,11 @@ $login-height: 400px;
 /************************************************
 Mixin Declarations
 *************************************************/
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -78,7 +83,13 @@ body {
     padding-left: 10%;
     padding-right: 10%;
   }
-
+  .debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
+  }
 }
 /************************************************
 navbar changes
