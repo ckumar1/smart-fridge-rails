@@ -127,7 +127,12 @@ navbar changes
   @include transition(.3s);
 }
 .dropdown-menu {
-  background-color: $main-color;
+  background-color: $active-state-color;
+  border-color: $active-state-color;
+  /*@include box-shadow(rgba(34,34,34,0.3), 2px, 4px, 1px)*/
+}
+.dropdown-menu > li > a:hover{
+  background-color: #444444;
 }
 
 .navbar-brand {
