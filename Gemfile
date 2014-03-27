@@ -10,11 +10,9 @@ gem 'bootstrap-will_paginate'
 gem 'clearance'
 gem 'rake'
 
-<<<<<<< HEAD
-=======
+
 # Use postgress in all env
 gem 'pg'
->>>>>>> FETCH_HEAD
 
 gem "nifty-generators", :group => :development
 

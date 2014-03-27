@@ -291,12 +291,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   spork-rails
-<<<<<<< HEAD
   sprockets (= 2.11.0)
-  sqlite3
-=======
-  sprockets
->>>>>>> FETCH_HEAD
   turbolinks
   uglifier
   will_paginate
