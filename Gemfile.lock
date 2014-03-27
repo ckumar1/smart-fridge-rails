@@ -292,8 +292,6 @@ DEPENDENCIES
   simple_form
   spork-rails
   sprockets (= 2.11.0)
-  sqlite3
-  sprockets
   turbolinks
   uglifier
   will_paginate
