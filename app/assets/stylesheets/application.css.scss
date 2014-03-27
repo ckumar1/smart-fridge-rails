@@ -116,7 +116,16 @@ navbar changes
 
 }
 
-
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #FFFFFF;
+  background-color: $active-state-color;
+  @include transition(.3s);
+}
+.navbar-default .navbar-nav > li > a:not(:hover){
+  color: #FFFFFF;
+  background-color: $main-color;
+  @include transition(.3s);
+}
 .dropdown-menu {
   background-color: $main-color;
 }
