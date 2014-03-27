@@ -1,0 +1,79 @@
+<div class="half-section col-md-6 service" style="padding-right:20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food</h3>
+    </div>
+    <ul class="list-group scrollable-list food-list">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Apple</h4>
+        <p class="list-group-item-text">lorum ipsum poopsum</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Orange</h4>
+        <p class="list-group-item-text">lorum cripsum woooooo</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Frosted Flakes</h4>
+        <p class="list-group-item-text">Welcome to wheel of fortune</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Lipton</h4>
+        <p class="list-group-item-text">Hooo doggy</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Coffee</h4>
+        <p class="list-group-item-text">Welp welp welpw elwpewlep</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Cool stuff</h4>
+        <p class="list-group-item-text">hurry up im trying to</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Steak</h4>
+        <p class="list-group-item-text">Get in the slime get slimed</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Grapes</h4>
+        <p class="list-group-item-text">Grapes are for good eating!</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Chicken</h4>
+        <p class="list-group-item-text">What came first the chick or the egg heuuehhue</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Kiwi</h4>
+        <p class="list-group-item-text">Kiwi's are pretty crazy fruits</p>
+      </a>
+    </ul>
+  </div>
+</div>
+<div class="half-section col-md-6 service" style="padding-right: 20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Food</h3>
+    </div>
+      <div id="show-food">
+        <div class="col-md-4 food-image-box">
+
+        </div>
+        <div class="col-md-8 foodtext" style="padding-left: 0px;">
+          <h2 style="text-align: left; margin: 10px 0px;">Food Item</h2>
+          <h4 style="text-align: left; margin: 10px 0px;">This is the view for a Food Item</h4>
+        </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript">
+    // jQuery example
+    $(document).ready(function () {
+        //for setting active state to the list views
+        $('.list-group.scrollable-list.food-list').find('a').on('click', function(e) {
+            event.preventDefault();
+
+            $('.scrollable-list.food-list a').removeClass('active');
+            $(this).addClass('active');
+            $('#show-food').load
+
+        });
+    });
+</script>

@@ -13,6 +13,11 @@ $login-height: 400px;
 /************************************************
 Mixin Declarations
 *************************************************/
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -53,9 +58,10 @@ Mixin Declarations
 /************************************************
 Global changes
 *************************************************/
-.container {
-  padding-left: 0px;
-  padding-right: 0px;
+.container,
+{
+  padding-left: 40px;
+  padding-right: 40px;
   background-size:1170px 100%;
 }
 body {
@@ -78,7 +84,13 @@ body {
     padding-left: 10%;
     padding-right: 10%;
   }
-
+  .debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
+  }
 }
 /************************************************
 navbar changes
@@ -104,10 +116,23 @@ navbar changes
   @include box-shadow(rgba(34,34,34,0.4), 0px, 0px, 4px);
 
 }
-
-
-.dropdown-menu {
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #FFFFFF;
+  background-color: $active-state-color;
+  @include transition(.3s);
+}
+.navbar-default .navbar-nav > li > a:not(:hover){
+  color: #FFFFFF;
   background-color: $main-color;
+  @include transition(.3s);
+}
+.dropdown-menu {
+  background-color: $active-state-color;
+  border-color: $active-state-color;
+  /*@include box-shadow(rgba(34,34,34,0.3), 2px, 4px, 1px)*/
+}
+.dropdown-menu > li > a:hover{
+  background-color: #444444;
 }
 
 .navbar-brand {
@@ -246,9 +271,28 @@ a.pull-left {
 .scrollable-list.food-list{
   overflow: scroll;
   height: 400px;
-
 }
 
+/********************************************
+  Show food/recipe classes
+*********************************************/
+#show-food{
+  height: 400px;
+  background-color: white;
+}
+.food-image-box{
+  @include border-radius(4px);
+  background-color: transparent;
+  margin: 10px;
+  border: solid 0.2em #bbbbbb;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+}
+.foodtext{
+  color: #555555;
+}
+/********************************************/
 .space-icon-out,
 .padIcon{
   /*width: 1.5em;*/
@@ -257,6 +301,12 @@ a.pull-left {
 
 .loginbut{
   margin-top: 5px;
+}
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+  background-color: #555555;
+  color: white;
+  border-color: #555555;
 }
 /************************************************
 footer changes

@@ -1,5 +1,16 @@
 == README
 
+Running Smart Fridge locally:
+
+    To run smart fridge locally follow these simple steps!
+
+    1. In terminal, go to root directory 'smart-fridge-rails'
+    2. run 'bundle' in the command line
+    3. run 'rails server' in the command line.
+    4. on a web browser, type "localhost:3000" as the url
+
+    
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
