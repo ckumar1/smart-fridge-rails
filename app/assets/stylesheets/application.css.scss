@@ -58,9 +58,10 @@ Mixin Declarations
 /************************************************
 Global changes
 *************************************************/
-.container {
-  padding-left: 0px;
-  padding-right: 0px;
+.container,
+{
+  padding-left: 40px;
+  padding-right: 40px;
   background-size:1170px 100%;
 }
 body {
@@ -115,7 +116,6 @@ navbar changes
   @include box-shadow(rgba(34,34,34,0.4), 0px, 0px, 4px);
 
 }
-
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #FFFFFF;
   background-color: $active-state-color;
@@ -271,9 +271,28 @@ a.pull-left {
 .scrollable-list.food-list{
   overflow: scroll;
   height: 400px;
-
 }
 
+/********************************************
+  Show food/recipe classes
+*********************************************/
+#show-food{
+  height: 400px;
+  background-color: white;
+}
+.food-image-box{
+  @include border-radius(4px);
+  background-color: transparent;
+  margin: 10px;
+  border: solid 0.2em #bbbbbb;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+}
+.foodtext{
+  color: #555555;
+}
+/********************************************/
 .space-icon-out,
 .padIcon{
   /*width: 1.5em;*/
@@ -282,6 +301,12 @@ a.pull-left {
 
 .loginbut{
   margin-top: 5px;
+}
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+  background-color: #555555;
+  color: white;
+  border-color: #555555;
 }
 /************************************************
 footer changes
