@@ -1,4 +1,7 @@
 == README
+Running Smart Fridge through the web:
+    
+    http://fridgepantry.herokuapp.com/
 
 Running Smart Fridge locally:
 
