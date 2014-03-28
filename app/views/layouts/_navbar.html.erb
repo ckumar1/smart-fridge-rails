@@ -30,17 +30,15 @@
             Settings<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><%= link_to sign_in_path, id:"Sign In" do %>
-                <i class="fa fa-user fa-fw space-icon-out" ></i>
-                Sign In
-            <% end %>
-          </li>
-          <li><%= link_to sign_in_path, id:"Notifications" do %>
+
+
+          <%= render "layouts/list_sign_in_state" %>
+          <li><%= link_to root_path, id:"Notifications" do %>
                 <i class="fa fa-check-square fa-fw space-icon-out" ></i>
                 Notifications
             <% end %>
           </li>
-          <li><%= link_to sign_in_path, id:"Chnage Password" do %>
+          <li><%= link_to new_password_path, id:"Change Password" do %>
                 <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
                 Change Password
               <% end %>
@@ -55,7 +53,8 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="static_pages/login"><i class="fa fa-user fa-fw space-icon-out"></i>user@gmail.com</a></li>
+        <%= render 'layouts/sign_in_state' %>
+        <!--<a href="static_pages/login"><i class="fa fa-user fa-fw space-icon-out"></i>user@gmail.com</a>-->
     </ul>
   </div><!-- /.navbar-collapse -->
   <div class="lineoooo"></div>
