@@ -1,39 +1,8 @@
 == README
 
-Running Smart Fridge locally:
+Check the current iteration at:
 
-    To run smart fridge locally follow these simple steps!
-
-    1. In terminal, go to root directory 'smart-fridge-rails'
-    2. run 'bundle' in the command line
-    3. run 'rails server' in the command line.
-    4. on a web browser, type "localhost:3000" as the url
-
-    
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+http://fridgepantry.herokuapp.com/
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
