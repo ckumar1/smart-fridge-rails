@@ -61,3 +61,4 @@ config/secrets.yml
 # ignore assets components
 # vendor/assets/components
 
+/public/assets

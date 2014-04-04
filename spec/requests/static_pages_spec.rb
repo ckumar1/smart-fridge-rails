@@ -4,9 +4,9 @@ describe "Static pages" do
 
   describe "Home page" do
 
-    it "should have the content 'Smart Fridge'" do
+    it "should have the content 'Welcome to Smart Fridge'" do
       visit root_url
-      expect(page).to have_content('Smart Fridge')
+      expect(page).to have_content('WELCOME TO SMART FRIDGE!')
     end
 
     it "should have the title 'Smart Fridge' "

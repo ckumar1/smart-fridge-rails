@@ -23,12 +23,12 @@ en:
       password_reset:
         submit: Save this password
       session:
-        submit: Sign in
+        submit: Login
       user:
-        create: Sign up
+        create: Sign Up
   layouts:
     application:
-      sign_in: Sign in
+      sign_in: Sign In
       sign_out: Sign out
   passwords:
     create:
@@ -44,7 +44,7 @@ en:
   sessions:
     form:
       forgot_password: Forgot password?
-      sign_up: Sign up
+      sign_up: Sign Up
     new:
       title: Sign in
   users:
