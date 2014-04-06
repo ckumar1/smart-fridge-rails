@@ -18,13 +18,14 @@
 <body>
 <%= render 'layouts/navbar' %>
 
-
-<div id='flash'>
-  <% flash.each do |key, value| -%>
-      <div id='flash_<%= key %>'><%=h value %></div>
-  <% end %>
-</div>
-
+<% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "error" : "success" %>">
+          <a class="close" data-dismiss="alert">&#215;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+    <% end %>
+<% end %>
 <div id="container">
 
 

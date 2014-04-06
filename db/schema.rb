@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325085504) do
+ActiveRecord::Schema.define(version: 20140406164029) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "food_items", force: true do |t|
     t.string   "name"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140325085504) do
     t.integer  "user_id"
   end
 
-  add_index "food_items", ["user_id"], name: "index_food_items_on_user_id"
+  add_index "food_items", ["user_id"], name: "index_food_items_on_user_id", using: :btree
 
   create_table "recipes", force: true do |t|
     t.text     "name"
@@ -34,7 +37,17 @@ ActiveRecord::Schema.define(version: 20140325085504) do
     t.integer  "user_id"
   end
 
-  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -46,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140325085504) do
     t.string   "remember_token",     limit: 128
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

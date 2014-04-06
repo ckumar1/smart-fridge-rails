@@ -4,6 +4,15 @@ GIT
   specs:
     database_cleaner (1.2.0)
 
+GIT
+  remote: git://github.com/rails/activerecord-session_store.git
+  revision: 55dc59aff9a1101c52004c0604bb88418624ba96
+  specs:
+    activerecord-session_store (0.1.0)
+      actionpack (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
+      railties (>= 4.0.0, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,6 +271,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-session_store!
   bcrypt-ruby
   bootstrap-sass
   bootstrap-will_paginate

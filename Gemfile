@@ -26,6 +26,7 @@ group :development, :test do
   gem 'sprockets', '2.11.0'
   gem 'guard-spork'
   gem 'childprocess'
+  gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 end
 
 group :test do

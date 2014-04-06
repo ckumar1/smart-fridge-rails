@@ -1,5 +1,11 @@
 <% if signed_in? %>
-    <li><%= link_to "Signed in as #{current_user.name}", '/#'%> </li>
+
+    <li><%= link_to static_pages_home_path, id:"Signed In" do%>
+          <i class="fa fa-user fa-fw space-icon-out" ></i>
+          <%= current_user.name %>
+      <% end %>
+    </li>
+
     <li><%= link_to t('layouts.application.sign_out'), sign_out_path, :method => :delete%></li>
 <% else %>
     <li><%= link_to t('layouts.application.sign_in'), sign_in_path, :id => 'sign_in_link'%></li>
