@@ -276,6 +276,7 @@ a.pull-left {
 .alert.alert-error{
   background-color: rgba(224,4,4,0.3);
   border-radius: 0px;
+  color: rgba(33,33,33,.8);
 }
 /********************************************
   Show food/recipe classes
@@ -326,4 +327,21 @@ footer changes
 .nav.nav-tabs{
   margin-top: 24px;
 }
+/************************************************
+form error message styles
+*************************************************/
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
 
+.field_with_errors .form-control {
+  @extend .control-group;
+  @extend .error;
+  border-color: #9b0001;
+  border-left-width: 10px;
+ // background-color: rgba(224,4,4,0.3);
+}

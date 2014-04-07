@@ -6,12 +6,8 @@ class UsersController < Clearance::UsersController
     if @user.save
       sign_in @user
       redirect_back_or url_after_create
-      flash.notice = "Account Created!!"
+      flash[:notice => 'success'] = "Account Created!!"
     else
-      flash.now.notice = @user.save;
-      if User.exists?(:email => @user.email)
-        flash.notice = "Email Already Associated with an Account!"
-      end
       render template: 'users/new'
     end
 
