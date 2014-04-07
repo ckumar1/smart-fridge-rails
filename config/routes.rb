@@ -10,7 +10,6 @@ SmartFridgeRails::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
   resources :users, controller: 'users'
-  match '/signup',  to: 'users#new',            via: 'get'
 
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
