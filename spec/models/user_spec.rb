@@ -30,6 +30,8 @@ describe User do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
         @user.email = valid_address
+        @user.name = "cool_dude"
+        @user.password = "ffffffff"
         expect(@user).to be_valid
       end
     end

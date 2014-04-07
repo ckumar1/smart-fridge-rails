@@ -5,7 +5,7 @@ module Features
       fill_in 'user_name', with: name
       fill_in 'user_email', with: email
       fill_in 'user_password', with: password
-      click_button I18n.t('helpers.submit.user.create')
+      #click_button I18n.t('helpers.submit.user.create')
     end
 
     def sign_in_with(email, password)
