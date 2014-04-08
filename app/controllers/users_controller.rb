@@ -21,7 +21,7 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
     if @user.update_attributes(user_from_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to current_user
     else
       render 'edit'
     end
@@ -36,10 +36,16 @@ class UsersController < Clearance::UsersController
     params.require(:user).permit(:name, :email, :password)
   end
   def signed_in_user
-    redirect_to current_user, notice: "Please sign in." unless signed_in?
+      unless signed_in? || current_user.nil?
+      redirect_to current_user
+      flash[:notice] = "Please sign in."
+      end
   end
   def correct_user
     @user = User.find(params[:id])
     redirect_to(user_path) unless current_user == @user
+    if current_user != @user
+      flash[:notice] = "Cannot Edit Account: You are not signed in to this account!"
+    end
   end
 end
