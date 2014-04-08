@@ -1,7 +1,7 @@
 def sign_in(user, options={})
   if options[:no_capybara]
     # Sign in when not using Capybara.
-    remember_token = User.generate_remember_token
+    remember_token = Clearance::Token.new
     cookies[:remember_token] = remember_token
     user.update_attribute(:remember_token, Clearance::Token.new)
   else

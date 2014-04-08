@@ -1,5 +1,6 @@
 class UsersController < Clearance::UsersController
-
+  before_action :signed_in_user, only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
   def show
     @user = User.find(params[:id])
   end
@@ -34,5 +35,11 @@ class UsersController < Clearance::UsersController
   def user_from_params
     params.require(:user).permit(:name, :email, :password)
   end
-
+  def signed_in_user
+    redirect_to current_user, notice: "Please sign in." unless !signed_in?
+  end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(user_path) unless current_user == @user
+  end
 end
