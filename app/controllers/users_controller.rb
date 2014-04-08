@@ -36,7 +36,7 @@ class UsersController < Clearance::UsersController
     params.require(:user).permit(:name, :email, :password)
   end
   def signed_in_user
-    redirect_to current_user, notice: "Please sign in." unless !signed_in?
+    redirect_to current_user, notice: "Please sign in." unless signed_in?
   end
   def correct_user
     @user = User.find(params[:id])
