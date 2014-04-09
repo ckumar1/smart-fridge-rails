@@ -1,23 +1,167 @@
 <% provide(:title, @user.name) %>
-<div class="row profile-bar">
+<div class="loginbut" style="text-align: center;">
+  <%= link_to edit_user_path, id:"Edit user" do %>
+      <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
+      Update your account!
+  <% end %>
+</div>
+<div class="row profile-bar"style="margin-left: 21.2%;">
   <aside class="span4">
     <section>
-      <h1 style="margin-left: 10px;">
-        <div class="col-md-1" style="padding-right: 0px; padding-bottom: 6px;">
+      <h1>
         <%= gravatar_for @user %>
-        </div>
-        <div class="col-md-2" style="padding-left: 0px; padding-top: 6px; padding-bottom: 10px; color:whitesmoke">
-            <%= @user.name %>
-         <br/>
-           <h4> <%= @user.email %> </h4>
-        </div>
+        <%= @user.name %>
       </h1>
-      <div class="loginbut">
-        <%= link_to edit_user_path, id:"Edit user" do %>
-            <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
-            Update your account!
-        <% end %>
-      </div>
     </section>
   </aside>
 </div>
+<div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
+  <div class="panel panel-default little-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food</h3>
+    </div>
+    <ul class="list-group scrollable-list little-food-list">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Apple</h4>
+        <p class="list-group-item-text">lorum ipsum poopsum</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Orange</h4>
+        <p class="list-group-item-text">lorum cripsum woooooo</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Frosted Flakes</h4>
+        <p class="list-group-item-text">Welcome to wheel of fortune</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Lipton</h4>
+        <p class="list-group-item-text">Hooo doggy</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Coffee</h4>
+        <p class="list-group-item-text">Welp welp welpw elwpewlep</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Cool stuff</h4>
+        <p class="list-group-item-text">hurry up im trying to</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Steak</h4>
+        <p class="list-group-item-text">Get in the slime get slimed</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Grapes</h4>
+        <p class="list-group-item-text">Grapes are for good eating!</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Chicken</h4>
+        <p class="list-group-item-text">What came first the chick or the egg heuuehhue</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Kiwi</h4>
+        <p class="list-group-item-text">Kiwi's are pretty crazy fruits</p>
+      </a>
+    </ul>
+  </div>
+</div>
+<div class="half-section col-md-4">
+  <div class="panel panel-default little-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Food</h3>
+    </div>
+    <div id="show-food-little">
+      <div class="col-md-4 food-image-box">
+
+      </div>
+      <div class="col-md-8 foodtext">
+        <h2 style="text-align: left; margin: 10px 0px;">Food Item</h2>
+        <h4 style="text-align: left; margin: 10px 0px;">This is the view for a Food Item</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    // jQuery example
+    $(document).ready(function () {
+        //for setting active state to the list views
+        $('.list-group.scrollable-list.food-list').find('a').on('click', function(e) {
+            event.preventDefault();
+
+            $('.scrollable-list.food-list a').removeClass('active');
+            $(this).addClass('active');
+            $('#show-food').load
+
+        });
+    });
+</script>
+<div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
+  <div class="panel panel-default little-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-book fa-fw padIcon"></i>Recipes</h3>
+    </div>
+    <ul class="list-group scrollable-list little-recipe-list">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Apple</h4>
+        <p class="list-group-item-text">lorum ipsum poopsum</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Orange</h4>
+        <p class="list-group-item-text">lorum cripsum woooooo</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Frosted Flakes</h4>
+        <p class="list-group-item-text">Welcome to wheel of fortune</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Lipton</h4>
+        <p class="list-group-item-text">Hooo doggy</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Coffee</h4>
+        <p class="list-group-item-text">Welp welp welpw elwpewlep</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Cool stuff</h4>
+        <p class="list-group-item-text">hurry up im trying to</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Steak</h4>
+        <p class="list-group-item-text">Get in the slime get slimed</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Grapes</h4>
+        <p class="list-group-item-text">Grapes are for good eating!</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Chicken</h4>
+        <p class="list-group-item-text">What came first the chick or the egg heuuehhue</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Kiwi</h4>
+        <p class="list-group-item-text">Kiwi's are pretty crazy fruits</p>
+      </a>
+    </ul>
+  </div>
+</div>
+<div class="half-section col-md-4" style="padding-right: 20px;">
+  <div class="panel panel-default little-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Recipe</h3>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+    // jQuery example
+    $(document).ready(function () {
+        //for setting active state to the list views
+        $('.list-group.scrollable-list.recipe-list').find('a').on('click', function(e) {
+            event.preventDefault();
+
+            $('.scrollable-list.recipe-list a').removeClass('active');
+            $(this).addClass('active');
+
+            //initContainerHeight();
+        });
+    });
+</script>

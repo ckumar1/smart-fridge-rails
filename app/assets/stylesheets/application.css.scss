@@ -272,7 +272,21 @@ a.pull-left {
   overflow: scroll;
   height: 400px;
 }
+.scrollable-list,
+.scrollable-list.little-recipe-list,
+.scrollable-list.little-food-list{
+  overflow: scroll;
+  height: 300px;
+  //width: 200px;
+}
+.panel.panel-default.little-panel{
+  width: 400px;
+  margin-top: -10px;
+}
+.col-md-4.little-margins{
+  margin-right: -20px;
 
+}
 .alert.alert-error{
   background-color: rgba(224,4,4,0.3);
   border-radius: 0px;
@@ -283,6 +297,10 @@ a.pull-left {
 *********************************************/
 #show-food{
   height: 400px;
+  background-color: white;
+}
+#show-food-little{
+  height: 300px;
   background-color: white;
 }
 .food-image-box{
@@ -349,10 +367,10 @@ form error message styles
 /************************************************
 user profile page styles
 *************************************************/
-aside {
+aside{
   section {
     padding: 10px 0;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px solid #333333;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -363,14 +381,14 @@ aside {
       line-height: 1;
     }
     h1 {
-      font-size: 2.2em;
+      font-size: 1.8em;
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 6px;
       margin-top: 0px;
     }
     h1.h4{
-      font-size: 1.6em;
+      font-size: 1em;
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 3px;
@@ -380,6 +398,12 @@ aside {
   }
 }
 .profile-bar{
-  background-color: #444444;
-  margin-top: -20px;
+  margin-top: -12px;
+  margin-left: 20px;
+  height: 100px;
+  z-index: 0;
+}
+
+.debug_dump{
+  width: 800px;
 }

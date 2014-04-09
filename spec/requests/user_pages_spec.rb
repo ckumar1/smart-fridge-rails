@@ -28,12 +28,12 @@ describe "User pages" do
     describe "with valid information" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
-      #before do
-        #fill_in "Name",             with: new_name
-        #fill_in "Email",            with: new_email
-        #fill_in "Password",         with: user.password
+      before do
+      fill_in "#user_name",      with: new_name
+      fill_in "Email",            with: new_email
+      fill_in "Password",         with: user.password
         #click_button "Save changes"
-      #end
+      end
       it { should have_link('Sign out') }
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
