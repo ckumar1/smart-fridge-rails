@@ -84,12 +84,13 @@
     // jQuery example
     $(document).ready(function () {
         //for setting active state to the list views
-        $('.list-group.scrollable-list.food-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-food-list').find('a').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.food-list a').removeClass('active');
+            $('.scrollable-list.little-food-list a').removeClass('active');
             $(this).addClass('active');
             $('#show-food').load
+           // $('.food').update("New text");
 
         });
     });
@@ -155,10 +156,10 @@
     // jQuery example
     $(document).ready(function () {
         //for setting active state to the list views
-        $('.list-group.scrollable-list.recipe-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-recipe-list').find('a').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.recipe-list a').removeClass('active');
+            $('.scrollable-list.little-recipe-list a').removeClass('active');
             $(this).addClass('active');
 
             //initContainerHeight();
