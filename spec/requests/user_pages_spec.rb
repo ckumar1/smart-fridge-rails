@@ -10,18 +10,28 @@ describe "User pages" do
     it { should have_content('Sign Up') }
   end
   describe "user page" do
-    let(:user) { FactoryGirl.create(:user, name: "crazydude") }
+    let(:user) { FactoryGirl.create(:user, name: "crazydude", password: "ffffffff") }
+    let!(:food1) { FactoryGirl.create(:food_item, name: "Apple", expiration_date: Time.local(2014, 4, 17, 9, 10) ,user_id: @user.id ) }
+    let!(:food2) { FactoryGirl.create(:food_item, name: "Banana", expiration_date: Time.local(2014, 4, 18, 9, 10) ,user_id: @user.id ) }
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+    describe "fooditems" do
+      it { should have_content(food1.content) }
+      it { should have_content(food2.content) }
+      it { should have_content(user.food_items.count) }
+    end
   end
   describe "edit" do
-    let(:user) { FactoryGirl.create(:user, name: "crazydude") }
-    before { visit edit_user_path(user) }
+    let(:user) { FactoryGirl.create(:user, name: "crazydude", password: "ffffffff") }
+    before do
+      sign_in(user, options={})
+      visit edit_user_path(user)
+    end
 
     describe "with invalid information" do
-      before { click_button 'Save changes' }
+      before { click_button 'submit' }
 
       it { should have_content('success') }
     end
@@ -29,9 +39,9 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-      fill_in "#user_name",      with: new_name
-      fill_in "Email",            with: new_email
-      fill_in "Password",         with: user.password
+      fill_in  :name ,             with: new_name
+      fill_in "user_email",            with: new_email
+      fill_in "user_password",         with: user.password
         #click_button "Save changes"
       end
       it { should have_link('Sign out') }

@@ -11,7 +11,7 @@ SmartFridgeRails::Application.routes.draw do
   root 'static_pages#home'
   resources :users, controller: 'users'
   resources :static_pages, controller: 'static_pages'
-  resources :food_items, controller: 'foods'
+  resources :food_items, controller: 'food_items'
 
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers

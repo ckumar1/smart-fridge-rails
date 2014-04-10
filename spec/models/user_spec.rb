@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: "Example User", email: "user@example.com", password: "fffffff") }
+  before { @user = User.new(name: "Example User", email: "user@example.com", password: "fffffff", remember_token: "ii", id: "1") }
 
   subject { @user }
 
@@ -11,6 +11,7 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:food_items) }
 
   describe "when name is too long" do
     before { @user.name = "a" * 51 }
@@ -49,5 +50,19 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+  describe "FoodItem associations" do
+
+    before { @user.save }
+    let!(:older_food_item) do
+      FactoryGirl.create(:food_item, name: "Apple", expiration_date: Time.local(2014, 4, 17, 9, 10) ,user_id: @user.id )
+    end
+    let!(:newer_food_item) do
+      FactoryGirl.create(:food_item, name: "Appleede", expiration_date: Time.local(2014, 4, 17, 9, 10) ,user_id: @user.id )
+    end
+
+    it "should have the right exipration dates in the right order" do
+      expect(@user.food_items.to_a).to eq [newer_food_item, older_food_item]
+    end
   end
 end

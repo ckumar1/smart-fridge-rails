@@ -18,50 +18,14 @@
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food</h3>
-    </div>
-    <ul class="list-group scrollable-list little-food-list">
-      <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">Apple</h4>
-        <p class="list-group-item-text">lorum ipsum poopsum</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Orange</h4>
-        <p class="list-group-item-text">lorum cripsum woooooo</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Frosted Flakes</h4>
-        <p class="list-group-item-text">Welcome to wheel of fortune</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Lipton</h4>
-        <p class="list-group-item-text">Hooo doggy</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Coffee</h4>
-        <p class="list-group-item-text">Welp welp welpw elwpewlep</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Cool stuff</h4>
-        <p class="list-group-item-text">hurry up im trying to</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Steak</h4>
-        <p class="list-group-item-text">Get in the slime get slimed</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Grapes</h4>
-        <p class="list-group-item-text">Grapes are for good eating!</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Chicken</h4>
-        <p class="list-group-item-text">What came first the chick or the egg heuuehhue</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Kiwi</h4>
-        <p class="list-group-item-text">Kiwi's are pretty crazy fruits</p>
-      </a>
-    </ul>
+      <% if @user.food_items.any? %>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
+          </div>
+          <ul class="list-group scrollable-list little-food-list">
+            <%= render @user.food_items %>
+          </ul>
+
+      <% end %>
   </div>
 </div>
 <div class="half-section col-md-4">
