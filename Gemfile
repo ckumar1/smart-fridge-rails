@@ -9,7 +9,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'clearance'
 gem 'rake'
-
+gem 'simplecov', :require => false, :group => :test
 
 # Use postgress in all env
 gem 'pg'
