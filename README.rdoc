@@ -7,5 +7,16 @@ Check the current iteration at:
 
 http://fridgepantry.herokuapp.com/
 
+Running Smart Fridge locally:
+
+To run smart fridge locally follow these simple steps!
+
+1. clone the repo and pull
+2. In terminal, go to root directory 'smart-fridge-rails'
+3. run 'bundle' in the command line
+4. run 'rails server' in the command line.
+5. on a web browser, type "localhost:3000" as the url
+
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
