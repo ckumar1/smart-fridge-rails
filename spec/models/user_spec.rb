@@ -59,14 +59,15 @@ describe User do
       end
     end
 
-    describe "when email format is valid" do
-      it "should be valid" do
+    describe 'is valid' do
+
+      let(:user) { build(:user) }
+
+      it "when email format is valid" do
         addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
         addresses.each do |valid_address|
-          @user.email = valid_address
-          @user.name = "cool_dude"
-          @user.password = "ffffffff"
-          expect(@user).to be_valid
+          user.email = valid_address
+          expect(user).to be_valid
         end
       end
     end
