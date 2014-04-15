@@ -27,12 +27,12 @@ group :development, :test do
   gem 'guard-spork'
   gem 'childprocess'
   gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 

@@ -10,10 +10,19 @@ describe User do
   it { should respond_to(:email) }
   it { should respond_to(:password) }
   it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
   it { should respond_to(:food_items) }
 
-  describe "when name is too long" do
+  it "should " do
+
+  end ""
+  respond_to(:authenticate)}
+end
+
+it "has a valid factory" do
+  expect(FactoryGirl.build(:user)).to be_valid
+end
+
+describe "when name is too long" do
     before { @user.name = "a" * 51 }
     it { should_not be_valid }
   end
@@ -55,10 +64,10 @@ describe User do
 
     before { @user.save }
     let!(:older_food_item) do
-      FactoryGirl.create(:food_item, name: "Apple", expiration_date: Time.local(2014, 4, 17, 9, 10) ,user_id: @user.id )
+      FactoryGirl.create(:food_item, name: "Apple", expiration_date: Time.local(2014, 4, 17, 9, 10), user_id: @user.id)
     end
     let!(:newer_food_item) do
-      FactoryGirl.create(:food_item, name: "Appleede", expiration_date: Time.local(2014, 4, 17, 9, 10) ,user_id: @user.id )
+      FactoryGirl.create(:food_item, name: "Appleede", expiration_date: Time.local(2014, 4, 17, 9, 10), user_id: @user.id)
     end
 
     it "should have the right exipration dates in the right order" do
