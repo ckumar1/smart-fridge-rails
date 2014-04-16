@@ -78,17 +78,17 @@ describe User do
     describe "FoodItem associations" do
 
       before { valid_user.save }
-      let!(:older_food_item) do
-        FactoryGirl.create(:food_item, name: "Apple", expiration_date: Time.local(2014, 4, 17, 9, 10), user_id: valid_user.id)
+      let!(:earliest_expiring_item) do
+        FactoryGirl.create(:food_item, name: "Apple", expiration_date: 2.weeks.from_now, user_id: valid_user.id)
       end
-      let!(:newer_food_item) do
-        FactoryGirl.create(:food_item, name: "Appleede", expiration_date: Time.local(2014, 4, 17, 9, 10), user_id: valid_user.id)
+      let!(:latest_expiring_item) do
+        FactoryGirl.create(:food_item, name: "Appleseed", expiration_date: 3.weeks.from_now, user_id: valid_user.id)
       end
 
       it "should have the right exipration dates in the right order" do
         # should be checking if valid_user.food_items is in the right order
         #  Not if the food items sorted does, because obviously it will
-        expect(valid_user.food_items).to eq [newer_food_item, older_food_item]
+        expect(valid_user.food_items).to eq [earliest_expiring_item, latest_expiring_item]
       end
     end
 
