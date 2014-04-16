@@ -29,33 +29,30 @@ describe User do
 
 
     context 'is invalid' do
-      before { @user = User.new(name: 'Example User', email: 'user@example.com', password: 'fffffff', remember_token: 'ii', id: '1') }
+      let! (:valid_user) { build(:user, name: 'Example User', email: 'user@example.com', password: 'fffffff') }
       subject { @user }
 
 
-      describe "when name is too long" do
-        before { @user.name = "a" * 51 }
-        it { should_not be_valid }
+      it "when name is too long" do
+        valid_user.name = "a" * 51
+        should_not be_valid
       end
 
-      describe "when email format is invalid" do
-        it "should be invalid" do
+      it "when email format is invalid" do
           addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
           addresses.each do |invalid_address|
-            @user.email = invalid_address
-            expect(@user).not_to be_valid
+            valid_user.email = invalid_address
+            expect(valid_user).not_to be_valid
           end
         end
-      end
 
-      describe "when email address is already taken" do
-        before do
-          user_with_same_email = @user.dup
-          user_with_same_email.save
-        end
 
-        it { should_not be_valid }
+      it "when email address is already taken" do
+        user_with_same_email = valid_user.dup
+        user_with_same_email.save
+
+        expect(valid_user).to_not be_valid
       end
     end
 
