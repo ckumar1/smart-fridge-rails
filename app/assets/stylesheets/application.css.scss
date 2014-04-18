@@ -62,10 +62,11 @@ Global changes
 {
   padding-left: 40px;
   padding-right: 40px;
-  background-size:1170px 100%;
+  background-size: 1170px 100%;
+  width: 1170px;
 }
 body {
-  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Raleway','Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -114,7 +115,8 @@ navbar changes
   background-color: $main-color;
   @include border-radius(0px);
   @include box-shadow(rgba(34,34,34,0.4), 0px, 0px, 4px);
-
+  //width: 1170px;
+  //float: inherit;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #FFFFFF;
@@ -279,6 +281,9 @@ a.pull-left {
   height: 300px;
   //width: 200px;
 }
+.panel.panel-default{
+  width: 100%;
+}
 .panel.panel-default.little-panel{
   width: 400px;
   margin-top: -10px;
@@ -295,15 +300,18 @@ a.pull-left {
 /********************************************
   Show food/recipe classes
 *********************************************/
-#show-food{
+#show-food,
+#show-recipe{
   height: 400px;
   background-color: white;
 }
-#show-food-little{
+#show-food-little,
+#show-recipe-little{
   height: 300px;
   background-color: white;
 }
-.food-image-box{
+.food-image-box,
+.recipe-image-box{
   @include border-radius(4px);
   background-color: transparent;
   margin: 10px;

@@ -1,0 +1,54 @@
+<div class="half-section col-sm-offset-1 col-md-5 service">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <% @recipe = Recipe.all %>
+      <% if @recipe.any? %>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+          </div>
+          <ul class="list-group scrollable-list recipe-list">
+            <% @recipe.each do |item| %>
+                <%= render item %>
+            <% end %>
+          </ul>
+
+      <% end %>
+      </div>
+</div>
+<div class="half-section col-md-5 service">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Recipe</h3>
+    </div>
+    <div id="show-recipe">
+      <div class="col-md-2 recipe-image-box" style="margin: 10px 0px 0px 10px;">
+
+      </div>
+      <div id="recipetext" class="col-md-6">
+        <%= render 'recipes/show', :locals => @recipe%>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    // jQuery example
+    $(document).ready(function () {
+        $("#recipetext h2").text($(".for-recipe.active h4").text());
+        $("#recipetext h4").text($(".for-recipe.active p").text());
+        //for setting active state to the list views
+        // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
+        $('.list-group.scrollable-list.recipe-list').find('a').on('click', function(e) {
+            event.preventDefault();
+
+            $('.scrollable-list.recipe-list a').removeClass('active');
+            $(this).addClass('active');
+
+            //for a selected item, the view food div should have the text of the selected item
+            if($(this).hasClass('active')){
+                $("#recipetext h2").text($(".for-recipe.active h4").text());
+                $("#recipetext h4").text($(".for-recipe.active p").text());
+            }
+
+
+        });
+    });
+</script>

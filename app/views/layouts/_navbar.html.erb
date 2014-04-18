@@ -13,14 +13,14 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="<%= 'active' if current_page?(static_pages_food_path)%>">
-        <%= link_to static_pages_food_path, id: "Food" do %>
+      <li class="<%= 'active' if current_page?(users_food_path)%>">
+        <%= link_to users_food_path, id: "Food" do %>
              <i class="fa fa-cutlery fa-fw space-icon-out" ></i>
                     Food
                   <% end %>
       </li>
-      <li class="<%= 'active' if current_page?(static_pages_recipes_path)%>">
-        <%= link_to static_pages_recipes_path, id: "Recipes" do %>
+      <li class="<%= 'active' if current_page?(users_recipes_path)%>">
+        <%= link_to users_recipes_path, id: "Recipes" do %>
             <i class="fa fa-book fa-fw space-icon-out" ></i>
             Recipes
         <% end %>
