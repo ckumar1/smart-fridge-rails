@@ -8,10 +8,10 @@
 <div class="row profile-bar"style="margin-left: 21.2%;">
   <aside class="span4">
     <section>
-      <h1>
+      <b><h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
+      </h1></b>b
     </section>
   </aside>
 </div>
@@ -23,7 +23,7 @@
           </div>
           <ul class="list-group scrollable-list little-food-list">
             <% @user.food_items.each do |item| %>
-                    <%= render item %>
+                 <%= render item %>
             <% end %>
           </ul>
 
@@ -40,7 +40,7 @@
 
       </div>
       <div id="foodtext" class="col-md-6">
-        <% #render 'food_items/show', :locals => @fooditem = FoodItem.find(params[:id]) %>
+        <%= render 'food_items/show', :locals => @user.food_items%>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
     // jQuery example
     $(document).ready(function () {
         //for setting active state to the list views
+       // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
         $('.list-group.scrollable-list.little-food-list').find('a').on('click', function(e) {
             event.preventDefault();
 
@@ -68,50 +69,17 @@
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-book fa-fw padIcon"></i>Recipes</h3>
-    </div>
-    <ul class="list-group scrollable-list little-recipe-list">
-      <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">Apple</h4>
-        <p class="list-group-item-text">lorum ipsum poopsum</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Orange</h4>
-        <p class="list-group-item-text">lorum cripsum woooooo</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Frosted Flakes</h4>
-        <p class="list-group-item-text">Welcome to wheel of fortune</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Lipton</h4>
-        <p class="list-group-item-text">Hooo doggy</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Coffee</h4>
-        <p class="list-group-item-text">Welp welp welpw elwpewlep</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Cool stuff</h4>
-        <p class="list-group-item-text">hurry up im trying to</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Steak</h4>
-        <p class="list-group-item-text">Get in the slime get slimed</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Grapes</h4>
-        <p class="list-group-item-text">Grapes are for good eating!</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Chicken</h4>
-        <p class="list-group-item-text">What came first the chick or the egg heuuehhue</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Kiwi</h4>
-        <p class="list-group-item-text">Kiwi's are pretty crazy fruits</p>
-      </a>
-    </ul>
+      <% @recipe = Recipe.all %>
+      <% if @recipe.any? %>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+          </div>
+          <ul class="list-group scrollable-list little-recipe-list">
+            <% @recipe.each do |item| %>
+                <%= render item %>
+            <% end %>
+          </ul>
+
+      <% end %>
   </div>
 </div>
 <div class="half-section col-md-4" style="padding-right: 20px;">
@@ -119,20 +87,36 @@
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Recipe</h3>
     </div>
+    <div id="show-recipe-little">
+      <div class="col-md-2 recipe-image-box" style="margin: 10px 0px 0px 10px;">
 
+      </div>
+      <div id="recipetext" class="col-md-6">
+        <%= render 'recipes/show', :locals => Recipe.find(params[:id])%>
+      </div>
+    </div>
   </div>
 </div>
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
+        $("#recipetext h2").text($(".for-recipe.active h4").text());
+        $("#recipetext h4").text($(".for-recipe.active p").text());
         //for setting active state to the list views
+        // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
         $('.list-group.scrollable-list.little-recipe-list').find('a').on('click', function(e) {
             event.preventDefault();
 
             $('.scrollable-list.little-recipe-list a').removeClass('active');
             $(this).addClass('active');
 
-            //initContainerHeight();
+            //for a selected item, the view food div should have the text of the selected item
+            if($(this).hasClass('active')){
+                $("#recipetext h2").text($(".for-recipe.active h4").text());
+                $("#recipetext h4").text($(".for-recipe.active p").text());
+            }
+
+
         });
     });
 </script>

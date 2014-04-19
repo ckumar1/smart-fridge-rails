@@ -1,6 +1,7 @@
 <% if signed_in? %>
 
-    <li><%= link_to current_user, id:"Signed In" do%>
+    <li class="<%= 'active' if current_page?(current_user)%>">
+      <%= link_to current_user, id:"Signed In" do%>
           <i class="fa fa-user fa-fw space-icon-out" ></i>
           <%= current_user.name %>
       <% end %>
