@@ -10,6 +10,9 @@ describe FoodItem do
   it { should respond_to(:name) }
   it { should respond_to(:expiration_date)}
   it { should respond_to(:user_id) }
+  it { should respond_to(:calories) }
+  it { should respond_to(:description) }
+
   its(:user_id) { should eq user.id }
 
   it { should be_valid }
