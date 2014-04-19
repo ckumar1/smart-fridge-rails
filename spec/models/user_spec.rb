@@ -70,14 +70,14 @@ describe User do
     end
 
     describe "remember token" do
-      before { valid_user.save }
+      subject { create(:user) }
       its(:remember_token) { should_not be_blank }
     end
 
 
     describe "FoodItem associations" do
 
-      before { valid_user.save }
+      let(:valid_user) { create(:user) }
       let!(:earliest_expiring_item) do
         FactoryGirl.create(:food_item, name: "Apple", expiration_date: 2.weeks.from_now, user_id: valid_user.id)
       end
