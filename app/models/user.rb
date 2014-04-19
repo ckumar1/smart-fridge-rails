@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # before_save { self.email = email.downcase }
 
   # Validations
-  VALID_NAME_REGEX = /\A([a-zA-Z0-9_-]|(\s)?){3,16}\Z/
+  VALID_NAME_REGEX = /\A([a-zA-Z'.0-9_-]|(\s)?){3,16}\Z/
 
   #make sure not a food item, as both User and FoodItem have name fields
   #if !FoodItem
