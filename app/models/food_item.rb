@@ -4,5 +4,5 @@ class FoodItem < ActiveRecord::Base
   default_scope -> { order('expiration_date ASC') }
   validates :name, presence: true, length: { maximum: 40 }
   validates :user_id, presence: true
-
+  
 end

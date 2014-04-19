@@ -1,0 +1,57 @@
+<div id="ajax-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header food-title">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="text-shadow: none; font-size: 30px; opacity: .8; color:white;">&times;</button>
+        <h4 class="modal-title">Add Food</h4>
+      </div>
+      <div class="modal-body add-food-modal">
+        <%= form_for :session, :url => food_items_path do |form| %>
+            <form class="form-horizontal" role="form">
+              <div class="form-group"> Food Information
+                <div class="col-sm-12">
+                  <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon emailbox"><i class="fa fa-cutlery fa-fw"></i></span>
+                    <!-- <input class="form-control" type="text" placeholder="Email address"> -->
+                    <%= form.text_field :name, :class => 'form-control', :placeholder => 'Food Name' %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-addon passwordbox"><i class="fa fa-file-text-o fa-fw"></i></span>
+                    <!-- <input class="form-control" type="password" placeholder="Password"> -->
+                    <%= form.text_field :description, :class => 'form-control', :placeholder => 'Item Description' %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-addon passwordbox"><i class="fa fa-heart fa-fw"></i></span>
+                    <!-- <input class="form-control" type="password" placeholder="Password"> -->
+                    <%= form.text_field :calories, :class => 'form-control', :placeholder => 'Calories' %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"> Expiration Date
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-addon passwordbox"><i class="fa fa-calendar fa-fw"></i></span>
+                    <!-- <input class="form-control" type="password" placeholder="Password"> -->
+                    <%= form.date_field :expiration_date, :class => 'form-control', :placeholder => 'Expiration Date' %>
+                  </div>
+                </div>
+              </div>
+            </form>
+        <%end%>
+        <div class="ajax-loader"></div>
+      </div>
+      <div class='modal-footer'>
+        <button type="button" data-dismiss="modal" class="btn">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

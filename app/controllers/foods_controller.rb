@@ -15,15 +15,19 @@ class FoodsController  < UsersController::User
   end
   def food_item_from_params
     food_params = params[:user_id]
+    id = food_params.delete(:id)
     name = food_params.delete(:name)
     description = food_params.delete(:description)
 
-     food_model.new(food_params).tap do |food|
-     food.name = name
-     food.description = description
+    food_model.new(food_params).tap do |food|
+      food.name = name
+      food.description = description
+      food.id = id
     end
+    params.require(:food_item).permit(:name, :description, :id)
   end
   def food_model
     @food_model || ::FoodItem
   end
+
 end
