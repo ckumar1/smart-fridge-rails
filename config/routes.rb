@@ -14,11 +14,13 @@ SmartFridgeRails::Application.routes.draw do
   resources :users, controller: 'users'
   resources :static_pages, controller: 'static_pages'
   resources :food_items, controller: 'food_items'
+  match 'food_items' => 'foods#create', :via => :post
+  resources :recipes, controller: 'recipes'
 
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
 
-  #resources :passwords,
+  #resources :passwords,z
   #          controller: 'clearance/passwords',
   #          only: [:create, :new]
   #

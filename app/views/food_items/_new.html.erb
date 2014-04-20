@@ -1,13 +1,13 @@
 <div id="ajax-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
+      <%= form_for FoodItem.new, :url => food_items_path do |form| %>
+      <form class="form-horizontal" role="form">
       <div class="modal-header food-title">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="text-shadow: none; font-size: 30px; opacity: .8; color:white;">&times;</button>
         <h4 class="modal-title">Add Food</h4>
       </div>
       <div class="modal-body add-food-modal">
-        <%= form_for :session, :url => food_items_path do |form| %>
-            <form class="form-horizontal" role="form">
               <div class="form-group"> Food Information
                 <div class="col-sm-12">
                   <div class="input-group margin-bottom-sm">
@@ -44,14 +44,15 @@
                   </div>
                 </div>
               </div>
-            </form>
-        <%end%>
+
         <div class="ajax-loader"></div>
       </div>
       <div class='modal-footer'>
         <button type="button" data-dismiss="modal" class="btn">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <%= form.submit :food_item, :class => 'btn btn-primary', :style => 'float: right;'%>
       </div>
+      </form>
+        <%end%>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
