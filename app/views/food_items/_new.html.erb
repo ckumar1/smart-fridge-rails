@@ -1,7 +1,7 @@
 <div id="ajax-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_for FoodItem.new, :url => food_items_path do |form| %>
+      <%= form_for (@fooditem) do |form| %>
       <form class="form-horizontal" role="form">
       <div class="modal-header food-title">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="text-shadow: none; font-size: 30px; opacity: .8; color:white;">&times;</button>

@@ -1,6 +1,9 @@
 class FoodItemsController <  ApplicationController
+  def food
+    @fooditem = FoodItem.new
+  end
   def new
-
+    @fooditem = FoodItem.new
   end
   def show
     @user = User.find(params[:id])
@@ -9,21 +12,27 @@ class FoodItemsController <  ApplicationController
   def create
     @user = current_user
     @fooditem = FoodItem.new(food_item_from_params)
-
-    @fooditem.calories = params[:calories]
-    @fooditem.name = params[:name]
-    @fooditem.description = params[:description]
+    #@fooditem.name = FoodItem.find_by_name(params[:name])
     @fooditem.user_id = @user.id
     if @fooditem.save
-      flash[:notice => 'success'] = "Food Item Created !!"
-      render '/users/food'
+      flash[:success] = "Food Item Created !!"
+      redirect_to '/food_items/food'
     else
-      flash[:notice => 'error'] = "Error: Could not create Food Item"
-      render '/users/food'
+      flash[:error] = "Error: Could not create Food Item"
+      redirect_to '/food_items/food'
+    end
+  end
+  def update
+    @fooditem = FoodItem.find(params[:id])
+    if @fooditem.update_attributes(food_item_from_params)
+      flash[:success] = "Foods Updated!"
+      redirect_to '/food_items/food'
+    else
+      render '/food_items/food'
     end
   end
   def food_item_from_params
-
+    params.require(:food_item).permit(:name, :description, :calories, :expiration_date)
   end
   def food_model
     @food_model || ::FoodItem

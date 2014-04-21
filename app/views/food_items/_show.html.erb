@@ -1,2 +1,7 @@
-<b><h2 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h2></b>
-<h4 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h4>
+<% if @fooditem.name == nil %>
+    <b><h2 style="text-align: left; margin: 10px 0px;"><%=  %></h2></b>
+    <h4 style="text-align: left; margin: 10px 0px;"><%=  %></h4>
+<%else%>
+    <b><h2 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h2></b>
+    <h4 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h4>
+<%end%>
