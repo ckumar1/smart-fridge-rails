@@ -16,4 +16,13 @@ FactoryGirl.define do
     i.description 'fresh and red'
     association :user
   end
+
+  factory :recipe do |i|
+    i.name "Apple Pie"
+    i.directions "bake that shit"
+    i.ingredients "apples and pie stuff"
+    i.notes 'baked and delicious'
+    association :user
+  end
+
 end
