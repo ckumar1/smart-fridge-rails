@@ -9,17 +9,9 @@ class User < ActiveRecord::Base
   VALID_NAME_REGEX = /\A([a-zA-Z'.0-9_-]|(\s)?){3,16}\Z/
 
   #make sure not a food item, as both User and FoodItem have name fields
-<<<<<<< HEAD
-
-  if !FoodItem
-    validates :name, presence: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
-  end
-
-=======
   #if !FoodItem
   validates :name, presence: true#, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
  # end
->>>>>>> master
  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
  # validates :email, format: { with: VALID_EMAIL_REGEX }
 
