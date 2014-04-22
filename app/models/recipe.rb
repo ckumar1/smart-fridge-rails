@@ -5,5 +5,5 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 80 }
   #validates :user_id, presence: true
   validates :directions, presence: true
-  validates :notes, presence:true
+  validates :ingredients, presence:true
 end
