@@ -1,5 +1,11 @@
 <a href="" class="list-group-item for-food">
-  <span class="badge food-badge"><%=food_item.expiration_date%></span>
+  <%if food_item.expiration_date > Date.today + 7 %>
+      <span class="badge food-badge" style="background-color: #009900"><%=food_item.expiration_date%></span>
+  <%elsif food_item.expiration_date <= Date.today + 7%>
+      <span class="badge food-badge" style="background-color: #ddaa00"><%=food_item.expiration_date%></span>
+  <%else food_item.expiration_date <= Date.today + 3%>
+      <span class="badge food-badge" style="background-color: #990000"><%=food_item.expiration_date%></span>
+  <%end%>
   <b><h4 class="list-group-item-heading <%= food_item.name %>"><%= food_item.name %></h4></b>
   <p style="margin-bottom: 0px;"><%= food_item.description %></p>
 </a>
