@@ -14,8 +14,10 @@ gem 'simplecov', :require => false, :group => :test
 # Use postgress in all env
 gem 'pg'
 
-gem "nifty-generators", :group => :development
+gem 'nifty-generators', :group => :development
 
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 group :development, :test do
   #gem 'sqlite3'
@@ -26,7 +28,6 @@ group :development, :test do
   gem 'sprockets', '2.11.0'
   gem 'guard-spork'
   gem 'childprocess'
-  gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
   gem 'factory_girl_rails'
 end
 
@@ -57,6 +58,8 @@ gem 'font-awesome-sass'
 gem 'font-awesome-rails'
 gem 'simple_form'
 
+
+
 group :doc do
   gem 'sdoc', '0.3.20', require: false
   gem 'rdoc'
@@ -64,4 +67,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'rails_serve_static_assets'
 end
