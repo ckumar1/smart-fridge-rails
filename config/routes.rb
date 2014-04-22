@@ -4,7 +4,7 @@ SmartFridgeRails::Application.routes.draw do
   get "static_pages/help"
   #get "static_pages/food"
   #get "static_pages/recipes"
-  get "users/food"
+  get "food_items/food"
   get "users/recipes"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -14,11 +14,13 @@ SmartFridgeRails::Application.routes.draw do
   resources :users, controller: 'users'
   resources :static_pages, controller: 'static_pages'
   resources :food_items, controller: 'food_items'
+  match 'food_items' => 'foods#create', :via => :post
+  resources :recipes, controller: 'recipes'
 
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
 
-  #resources :passwords,
+  #resources :passwords,z
   #          controller: 'clearance/passwords',
   #          only: [:create, :new]
   #

@@ -1,7 +1,11 @@
+<% @user = current_user %>
 <% provide(:title, @user.name + "foods") %>
-<div id="addFoodButton">
-  + <span class="showText">Add Food</span></a>
-</div>
+  <%= link_to '', data: { toggle: "modal", target: "#ajax-modal" } do%>
+    <div id="addFoodButton">
+    + <span class="showText">Add Food</span>
+    </div>
+  <%end%>
+  <%= render 'food_items/new' %>
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
     <div class="panel-heading">

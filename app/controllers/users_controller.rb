@@ -30,9 +30,6 @@ class UsersController < Clearance::UsersController
   def edit
     @user = User.find(params[:id])
   end
-  def food
-    @user = User.find(current_user)
-  end
   private
   def user_from_params
     params.require(:user).permit(:name, :email, :password)

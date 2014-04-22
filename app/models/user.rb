@@ -19,5 +19,5 @@ class User < ActiveRecord::Base
 
   # Relationships
   has_many :food_items, dependent: :destroy
-  has_many  :recipes, dependent: :destroy
+  has_many :recipes, dependent: :destroy
 end
