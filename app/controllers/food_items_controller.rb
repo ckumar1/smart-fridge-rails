@@ -1,4 +1,4 @@
-class FoodsController  < UsersController::User
+class FoodItemsController < UsersController::User
   def show
     @user = User.find(params[:id])
     @user.food_items = FoodItem.find(params[:user_id])
