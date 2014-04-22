@@ -35,6 +35,9 @@
             if($(this).hasClass('active')){
                 $("#foodtext h2").text($(".for-food.active h4").text());
                 $("#foodtext h4").text($(".for-food.active p").text());
+                $("#foodtext span").text($(".for-food.active span").text());
+                var color = $(".for-food.active span").css( "background-color" );
+                $("#foodtext span").css("background-color",color);
             }
 
 
