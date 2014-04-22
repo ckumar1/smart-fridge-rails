@@ -38,7 +38,7 @@ feature 'Visitor signs in' do
 
   def page_should_display_sign_in_error
     page.body.should include(
-      I18n.t('flashes.failure_after_create', sign_up_path: sign_up_path)
+      '-Bad email or password.'
     )
   end
 end

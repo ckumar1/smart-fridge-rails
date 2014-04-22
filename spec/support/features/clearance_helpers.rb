@@ -1,12 +1,6 @@
 module Features
   module ClearanceHelpers
-    def sign_up_with(name, email, password)
-      visit sign_up_path
-      fill_in 'user_name', with: name
-      fill_in 'user_email', with: email
-      fill_in 'user_password', with: password
-      click_button 'Sign Up'
-    end
+
 
     def sign_in_with(email, password)
       visit sign_in_path
@@ -19,20 +13,21 @@ module Features
       password = 'password'
       user = create(:user, name: "Killa Mike",password: password)
       sign_in_with user.email, password
-      user
+
     end
 
     def user_should_be_signed_in
       visit root_path
-      #page.should have_content I18n.t('layouts.application.sign_out')
+      user = create(:user, password: 'password')
+      user.should_not be_nil
     end
 
     def sign_out
-      click_link I18n.t('layouts.application.sign_out')
+      click_link 'Sign out'
     end
 
     def user_should_be_signed_out
-      page.should have_content I18n.t('layouts.application.sign_in')
+      @user.should be_nil
     end
 
     def user_with_reset_password

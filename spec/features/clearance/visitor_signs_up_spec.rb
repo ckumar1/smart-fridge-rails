@@ -17,19 +17,19 @@ feature 'Visitor signs up' do
   scenario 'with valid name, email and password' do
     #pending
     # TODO need to add field for name to sign up Form
-  sign_up_with valid.name, valid.email, valid.password
+    @user = sign_up_path(:name => 'coolz', :password => 'password', :email => 'coolz@cool.com')
 
     user_should_be_signed_in
   end
 
   scenario 'tries with invalid email' do
-    sign_up_with valid.name, invalid.email, valid.password
+    sign_up_path(:name => 'coolz', :password => 'password', :email => 'coolz,@..jacool.com')
 
     user_should_be_signed_out
   end
 
   scenario 'tries with blank password' do
-    sign_up_with valid.name, valid.email, ''
+    sign_up_path(:name => 'coolz', :password => '', :email => 'coolz,@..jacool.com')
 
     user_should_be_signed_out
   end
