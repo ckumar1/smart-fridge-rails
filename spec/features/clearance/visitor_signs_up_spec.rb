@@ -15,9 +15,7 @@ feature 'Visitor signs up' do
   end
 
   scenario 'with valid name, email and password' do
-    #pending
-    # TODO need to add field for name to sign up Form
-  sign_up_with valid.name, valid.email, valid.password
+    sign_up_with valid.name, valid.email, valid.password
 
     user_should_be_signed_in
   end

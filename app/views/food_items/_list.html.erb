@@ -1,0 +1,15 @@
+<div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
+  <div class="panel panel-default little-panel">
+    <div class="panel-heading">
+      <% if @user.food_items.any? %>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
+          </div>
+          <ul class="list-group scrollable-list little-food-list">
+            <% @user.food_items.each do |item| %>
+                <%= render item %>
+            <% end %>
+          </ul>
+
+      <% end %>
+      </div>
+</div>

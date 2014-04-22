@@ -25,6 +25,7 @@ describe User do
       it { should respond_to(:password) }
       it { should respond_to(:remember_token) }
       it { should respond_to(:food_items) }
+      it { should respond_to(:recipes) }
     end
 
 
@@ -70,25 +71,32 @@ describe User do
     end
 
     describe "remember token" do
-      before { valid_user.save }
+      subject { create(:user) }
       its(:remember_token) { should_not be_blank }
     end
 
 
     describe "FoodItem associations" do
 
-      before { valid_user.save }
+      let!(:valid_user) { create(:user) }
       let!(:earliest_expiring_item) do
-        FactoryGirl.create(:food_item, name: "Apple", expiration_date: 2.weeks.from_now, user_id: valid_user.id)
+        FactoryGirl.create(:food_item, name: "Apple", expiration_date: 2.weeks.from_now, user: valid_user)
       end
       let!(:latest_expiring_item) do
-        FactoryGirl.create(:food_item, name: "Appleseed", expiration_date: 3.weeks.from_now, user_id: valid_user.id)
+        FactoryGirl.create(:food_item, name: "Appleseeds", expiration_date: 3.weeks.from_now, user: valid_user)
       end
 
       it "should have the right exipration dates in the right order" do
         # should be checking if valid_user.food_items is in the right order
         #  Not if the food items sorted does, because obviously it will
         expect(valid_user.food_items).to eq [earliest_expiring_item, latest_expiring_item]
+      end
+
+      it "should destroy associated food_items" do
+        food_items = valid_user.food_items
+        valid_user.destroy
+        food_items.each do |item|
+          FoodItem.find_by_id(item.id).should be_nil end
       end
     end
 

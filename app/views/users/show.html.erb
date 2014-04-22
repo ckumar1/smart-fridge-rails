@@ -11,40 +11,15 @@
       <b><h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1></b>b
+      </h1></b>
     </section>
   </aside>
 </div>
-<div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
-  <div class="panel panel-default little-panel">
-    <div class="panel-heading">
-      <% if @user.food_items.any? %>
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
-          </div>
-          <ul class="list-group scrollable-list little-food-list">
-            <% @user.food_items.each do |item| %>
-                 <%= render item %>
-            <% end %>
-          </ul>
 
-      <% end %>
-  </div>
-</div>
-<div class="half-section col-md-4">
-  <div class="panel panel-default little-panel">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-file-text fa-fw padIcon"></i>View Food</h3>
-    </div>
-    <div id="show-food-little">
-      <div class="col-md-2 food-image-box" style="margin: 10px 0px 0px 10px;">
+<%= render 'food_items/list' %>
 
-      </div>
-      <div id="foodtext" class="col-md-6">
-        <%= render 'food_items/show', :locals => @user.food_items%>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'food_items/view_food_item' %>
+
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
@@ -69,12 +44,11 @@
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
     <div class="panel-heading">
-      <% @recipe = Recipe.all %>
-      <% if @recipe.any? %>
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+      <% if @user.recipes.any? %>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list little-recipe-list">
-            <% @recipe.each do |item| %>
+            <% @user.recipes.each do |item| %>
                 <%= render item %>
             <% end %>
           </ul>
@@ -92,7 +66,7 @@
 
       </div>
       <div id="recipetext" class="col-md-6">
-        <%= render 'recipes/show', :locals => Recipe.find(params[:id])%>
+        <%= render 'recipes/show', :locals => @user.recipes%>
       </div>
     </div>
   </div>
@@ -100,8 +74,8 @@
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
-        $("#recipetext h2").text($(".for-recipe.active h4").text());
-        $("#recipetext h4").text($(".for-recipe.active p").text());
+//        $("#recipetext h2").text($(".for-recipe.active h4").text());
+//        $("#recipetext h4").text($(".for-recipe.active p").text());
         //for setting active state to the list views
         // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
         $('.list-group.scrollable-list.little-recipe-list').find('a').on('click', function(e) {

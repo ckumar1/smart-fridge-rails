@@ -16,15 +16,15 @@ module Features
     end
 
     def signed_in_user
-      password = 'password'
-      user = create(:user, name: "Killa Mike",password: password)
+      password = 'password123'
+      user = create(:user, name: "Signed-in Mike",password: password)
       sign_in_with user.email, password
       user
     end
 
     def user_should_be_signed_in
       visit root_path
-      #page.should have_content I18n.t('layouts.application.sign_out')
+      page.should have_content I18n.t('layouts.application.sign_out')
     end
 
     def sign_out
