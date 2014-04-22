@@ -447,6 +447,9 @@ a.pull-left {
   background-color: #777777;
   border-radius: 4px;
 }
+a.list-group-item.active > .badge{
+  color: white;
+}
 /********************************************/
 .space-icon-out,
 .padIcon{
