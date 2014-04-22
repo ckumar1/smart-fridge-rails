@@ -10,18 +10,18 @@ FactoryGirl.define do
 
 
   factory :food_item do |i|
-    i.name "Apple"
+    i.name { Faker::Lorem.words 1 }
     i.expiration_date { 2.weeks.from_now }
-    i.calories 80
-    i.description 'fresh and red'
+    i.calories { rand(500) }
+    i.description { Faker::Lorem.sentence }
     association :user
   end
 
   factory :recipe do |i|
-    i.name "Apple Pie"
-    i.directions "bake that shit"
-    i.ingredients "apples and pie stuff"
-    i.notes 'baked and delicious'
+    i.name { Faker::Lorem.words 2 }
+    i.directions { Faker::Lorem.sentences 5 }
+    i.ingredients { Faker::Lorem.words 10 }
+    i.notes { Faker::Lorem.paragraph }
     association :user
   end
 
