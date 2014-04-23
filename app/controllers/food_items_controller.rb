@@ -1,4 +1,6 @@
 class FoodItemsController <  ApplicationController
+  before_filter :signed_in_user, only: [:create, :destroy, :update ]
+
   def food
     @fooditem = FoodItem.new
   end

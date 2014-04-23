@@ -13,7 +13,7 @@ SmartFridgeRails::Application.routes.draw do
   root 'static_pages#home'
   resources :users, controller: 'users'
   resources :static_pages, controller: 'static_pages'
-  resources :food_items, controller: 'food_items'
+  resources :food_items, controller: 'food_items', only: [:create, :edit, :update, :destroy]
   match 'food_items' => 'foods#create', :via => :post
   resources :recipes, controller: 'recipes'
 
