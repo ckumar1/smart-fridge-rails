@@ -1,11 +1,21 @@
-<% provide(:title, @user.name + "foods") %>
-<div id="addFoodButton">
-  + <span class="showText">Add Food</span></a>
-</div>
+<% @user = current_user %>
+
+<% if @user %>
+    <% provide(:title, "#{@user.name}'s food") %>
+<% else %>
+    <% provide(:title, "Food Items") %>
+<% end %>
+  <%= link_to '', data: { toggle: "modal", target: "#ajax-modal" } do%>
+    <div id="addFoodButton">
+    + <span class="showText">Add Food</span>
+    </div>
+  <%end%>
+  <%= render 'food_items/new', partial: true %>
+
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
     <div class="panel-heading">
-      <% if @user.food_items.any? %>
+      <% if @user && @user.food_items.any? %>
           <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list food-list">
@@ -27,7 +37,7 @@
 
       </div>
       <div id="foodtext" class="col-md-6">
-        <%= render 'food_items/show', :locals => @user.food_items%>
+        <%= render 'food_items/show', :locals => @user.food_items unless @user.nil?%>
       </div>
     </div>
   </div>

@@ -28,16 +28,6 @@ ActiveRecord::Schema.define(version: 20140415163435) do
 
   add_index "food_items", ["user_id"], name: "index_food_items_on_user_id", using: :btree
 
-  create_table "foods", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.date     "expiration_date"
-    t.integer  "calories"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "recipes", force: true do |t|
     t.text     "name"
     t.text     "directions"

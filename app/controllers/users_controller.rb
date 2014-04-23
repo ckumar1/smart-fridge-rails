@@ -30,18 +30,9 @@ class UsersController < Clearance::UsersController
   def edit
     @user = User.find(params[:id])
   end
-  def food
-    @user = User.find(current_user)
-  end
   private
   def user_from_params
     params.require(:user).permit(:name, :email, :password)
-  end
-  def signed_in_user
-      unless signed_in? || current_user.nil?
-      redirect_to current_user
-      flash[:notice] = "Please sign in."
-      end
   end
   def correct_user
     @user = User.find(params[:id])

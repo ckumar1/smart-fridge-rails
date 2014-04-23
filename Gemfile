@@ -14,8 +14,12 @@ gem 'simplecov', :require => false, :group => :test
 # Use postgress in all env
 gem 'pg'
 
-gem 'nifty-generators', :group => :development
 
+group :development do
+  gem 'meta_request'
+  gem 'nifty-generators'
+  gem 'awesome_print'
+end
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
