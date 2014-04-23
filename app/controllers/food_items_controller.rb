@@ -33,13 +33,15 @@ class FoodItemsController <  ApplicationController
       render '/food_items/food'
     end
   end
-  def food_item_from_params
-    params.require(:food_item).permit(:name, :description, :calories, :expiration_date)
-  end
   def food_model
     @food_model || ::FoodItem
   end
   def index
     redirect_to '/users/food'
+  end
+
+  private
+  def food_item_from_params
+    params.require(:food_item).permit(:name, :description, :calories, :expiration_date)
   end
 end
