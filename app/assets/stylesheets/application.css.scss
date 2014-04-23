@@ -310,7 +310,7 @@ a.pull-left {
 .scrollable-list.little-recipe-list,
 .scrollable-list.little-food-list{
   overflow: scroll;
-  height: 300px;
+  height: 296px;
   //width: 200px;
 }
 .panel.panel-default{
@@ -420,6 +420,10 @@ a.pull-left {
 }
 .modal-body.add-recipe-modal{
   height: 412px;
+}
+.modal-dialog.recipe-dialog{
+  height: 412px;
+  width: 800px;
 }
 .modal-header.food-title{
   background-color: $active-state-color;

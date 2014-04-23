@@ -12,7 +12,6 @@ class FoodItemsController <  ApplicationController
   def create
     @user = current_user
     @fooditem = FoodItem.new(food_item_from_params)
-    #@fooditem.name = FoodItem.find_by_name(params[:name])
     @fooditem.user_id = @user.id
     if @fooditem.save
       flash[:success] = "Food Item Created !!"

@@ -1,4 +1,4 @@
-class RecipesController < UsersController::User
+class RecipesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = Recipe.find(params[:id])
