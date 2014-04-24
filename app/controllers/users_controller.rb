@@ -34,12 +34,6 @@ class UsersController < Clearance::UsersController
   def user_from_params
     params.require(:user).permit(:name, :email, :password)
   end
-  def signed_in_user
-      unless signed_in? || current_user.nil?
-      redirect_to current_user
-      flash[:notice] = "Please sign in."
-      end
-  end
   def correct_user
     @user = User.find(params[:id])
     redirect_to(user_path) unless current_user == @user

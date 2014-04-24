@@ -62,3 +62,4 @@ config/secrets.yml
 # vendor/assets/components
 
 /public/assets
+tags

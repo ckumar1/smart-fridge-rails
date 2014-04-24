@@ -421,10 +421,13 @@ a.pull-left {
 .modal-body.add-recipe-modal{
   height: 412px;
 }
+<<<<<<< HEAD
 .modal-dialog.recipe-dialog{
   height: 412px;
   width: 800px;
 }
+=======
+>>>>>>> master
 .modal-header.food-title{
   background-color: $active-state-color;
   border-bottom-color: #444444;
@@ -451,9 +454,11 @@ a.pull-left {
   background-color: #777777;
   border-radius: 4px;
 }
+
 a.list-group-item.active > .badge{
   color: white;
 }
+
 /********************************************/
 .space-icon-out,
 .padIcon{

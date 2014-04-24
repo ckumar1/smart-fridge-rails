@@ -1,9 +1,12 @@
+
 <%= link_to 'recipes/new_recipe', data: { toggle: "modal", target: "#ajax-modal" } do%>
     <div id="addRecipeButton">
       + <span class="showText">Add Recipe</span>
     </div>
 <%end%>
+
 <%= render 'recipes/new_recipe' %>
+
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default">
     <div class="panel-heading">

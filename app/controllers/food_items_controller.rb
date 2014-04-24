@@ -1,4 +1,6 @@
 class FoodItemsController <  ApplicationController
+  before_filter :signed_in_user, only: [:create, :destroy, :update ]
+
   def food
     @fooditem = FoodItem.new
   end
@@ -7,19 +9,17 @@ class FoodItemsController <  ApplicationController
   end
   def show
     @user = User.find(params[:id])
-    @food_items = FoodItem.find(params[:user_id])
+    @food_items = @user.food_items
   end
   def create
-    @user = current_user
-    @fooditem = FoodItem.new(food_item_from_params)
-    @fooditem.user_id = @user.id
-    if @fooditem.save
-      flash[:success] = "Food Item Created !!"
-      redirect_to '/food_items/food'
-    else
-      flash[:error] = "Error: Could not create Food Item"
-      redirect_to '/food_items/food'
-    end
+      @fooditem = current_user.food_items.build(food_item_from_params)
+      if @fooditem.save
+        flash[:success] = "Food Item Created!!"
+        redirect_to food_items_food_path
+      else
+        flash[:error] = "Error: Could not create Food Item"
+        redirect_to food_items_food_path
+      end
   end
   def update
     @fooditem = FoodItem.find(params[:id])
@@ -27,7 +27,6 @@ class FoodItemsController <  ApplicationController
       flash[:success] = "Foods Updated!"
       redirect_to '/food_items/food'
     else
-      flash[:error] = "Food could not be created."
       render '/food_items/food'
     end
   end
@@ -39,5 +38,10 @@ class FoodItemsController <  ApplicationController
   end
   def index
     redirect_to '/users/food'
+  end
+
+  private
+  def food_item_from_params
+    params.require(:food_item).permit(:name, :description, :calories, :expiration_date)
   end
 end

@@ -1,15 +1,29 @@
 <% @user = current_user %>
+<<<<<<< HEAD:app/views/food_items/food.html.erb
 <% provide(:title, @user.name + "foods") %>
+=======
+
+<% if @user %>
+    <% provide(:title, "#{@user.name}'s food") %>
+<% else %>
+    <% provide(:title, "Food Items") %>
+<% end %>
+>>>>>>> master:app/views/food_items/food.html.erb
   <%= link_to '', data: { toggle: "modal", target: "#ajax-modal" } do%>
     <div id="addFoodButton">
     + <span class="showText">Add Food</span>
     </div>
   <%end%>
+<<<<<<< HEAD:app/views/food_items/food.html.erb
   <%= render 'food_items/new' %>
+=======
+  <%= render 'food_items/new', partial: true %>
+
+>>>>>>> master:app/views/food_items/food.html.erb
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
     <div class="panel-heading">
-      <% if @user.food_items.any? %>
+      <% if @user && @user.food_items.any? %>
           <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list food-list">
@@ -30,8 +44,8 @@
       <div class="col-md-2 food-image-box" style="margin: 10px 0px 0px 10px;">
 
       </div>
-      <div id="foodtext" class="col-md-9">
-        <%= render 'food_items/show', :locals => @user.food_items%>
+      <div id="foodtext" class="col-md-6">
+        <%= render 'food_items/show', :locals => @user.food_items unless @user.nil?%>
       </div>
     </div>
   </div>
