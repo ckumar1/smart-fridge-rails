@@ -1,25 +1,15 @@
 <% @user = current_user %>
-<<<<<<< HEAD:app/views/food_items/food.html.erb
-<% provide(:title, @user.name + "foods") %>
-=======
-
 <% if @user %>
     <% provide(:title, "#{@user.name}'s food") %>
 <% else %>
     <% provide(:title, "Food Items") %>
 <% end %>
->>>>>>> master:app/views/food_items/food.html.erb
   <%= link_to '', data: { toggle: "modal", target: "#ajax-modal" } do%>
     <div id="addFoodButton">
     + <span class="showText">Add Food</span>
     </div>
   <%end%>
-<<<<<<< HEAD:app/views/food_items/food.html.erb
-  <%= render 'food_items/new' %>
-=======
   <%= render 'food_items/new', partial: true %>
-
->>>>>>> master:app/views/food_items/food.html.erb
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
     <div class="panel-heading">

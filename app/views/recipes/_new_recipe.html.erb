@@ -7,14 +7,14 @@
       </div>
       <div class="half-section col-md-6" style="float: right; position: inherit; margin: 20px 14px 0px 0px">
         <span style="margin-left: -10px;">Ingredients</span>
-        <div class="panel panel-default" style="margin-top: 4px;">
+        <div class="panel panel-default" style="margin-top: 4px; margin-bottom: 10px;">
           <div class="panel-heading" style="height: 50px; background-color: #cccccc">
             <% @food_items = current_user.food_items %>
             <% selected_ingredients = "none" %>
             <% if @food_items.any? %>
                 <h3 class="panel-title modal-list" style="padding-top: 6px; text-align: center;" ><i class="fa fa-cutlery fa-fw padIcon"></i>Ingredients (<%= selected_ingredients %>)</h3>
           </div>
-                <ul class="list-group scrollable-list little-food-list in-modal">
+                <ul class="list-group scrollable-list little-recipe-list in-modal">
                   <% @food_items.each do |item| %>
                       <%= render item %>
                   <% end %>
@@ -29,7 +29,7 @@
             var icon = "<i class=\"fa fa-cutlery fa-fw padIcon\"></i>";
             $(document).ready(function () {
 
-                $('.list-group.scrollable-list.little-food-list').find('a').on('click', function(e) {
+                $('.list-group.scrollable-list.little-recipe-list.in-modal').find('a').on('click', function(e) {
                     event.preventDefault();
                     if($(this).hasClass('active')){
                         $(this).removeClass('active');
@@ -46,9 +46,20 @@
                 });
             });
         </script>
+        <%= form_for :ingredient_amount, :url => recipes_recipes_path do |form| %>
+            <form class="form-horizontal" role="form">
+                <div class="col-sm-12" style="padding: 0px; margin-top: 0px;">
+                  <div class="input-group margin-bottom-sm" style="margin: 0px;height:55px;">
+                    <span class="input-group-addon emailbox"><i class="fa fa-cutlery fa-fw"></i></span>
+                    <!-- <input class="form-control" type="text" placeholder="Email address"> -->
+                    <%= form.text_field :ingredient_amount, :class => 'form-control', :style => 'height: 55px;', :placeholder => '# number of ingredient' %>
+                  </div>
+                </div>
+            </form>
+        <%end%>
       </div>
       <div class="modal-body add-recipe-modal" style="width: 400px;">
-        <%= form_for :session, :url => recipes_recipes_path do |form| %>
+        <%= form_for :recipe, :url => recipes_recipes_path do |form| %>
             <form class="form-horizontal" role="form">
               <div class="form-group"> Recipe Information
                 <div class="col-sm-12">
