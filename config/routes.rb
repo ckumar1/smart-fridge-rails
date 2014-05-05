@@ -12,10 +12,18 @@ SmartFridgeRails::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
-  resources :users, controller: 'users'
+
+  # Static Pages Routing
   resources :static_pages, controller: 'static_pages'
+
+  # User Routing
+  resources :users, controller: 'users'
+
+  # Food Item Routing
   resources :food_items, controller: 'food_items', only: [:create, :edit, :update, :destroy]
   match 'food_items' => 'foods#create', :via => :post
+
+  # Recipe Routing
   resources :recipes, controller: 'recipes'
 
   # Clearance endpoints available for rerouting if needed
