@@ -26,10 +26,18 @@ SmartFridgeRails::Application.routes.draw do
   # Recipe Routing
   resources :recipes, controller: 'recipes'
 
+  # API Routing
+
+  # Authentication API routing
+  namespace :api, path: '/', constraints: {subdomain: 'api'} do
+    match 'access' => 'access#authenticate', via: :post
+    match 'access/new' => 'access#new', via: :post
+  end
+
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
 
-  #resources :passwords,z
+  #resources :passwords,
   #          controller: 'clearance/passwords',
   #          only: [:create, :new]
   #
