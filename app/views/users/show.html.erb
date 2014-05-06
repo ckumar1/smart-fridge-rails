@@ -47,15 +47,13 @@
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
     <div class="panel-heading">
-      <% if @user.recipes.any? %>
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes <% if @user.recipes.any? %>(<%= @user.recipes.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list little-recipe-list">
             <% @user.recipes.each do |item| %>
                 <%= render item %>
-            <% end %>
           </ul>
-
+            <% end %>
       <% end %>
   </div>
 </div>

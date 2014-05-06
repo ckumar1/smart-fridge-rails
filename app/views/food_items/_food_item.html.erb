@@ -1,14 +1,15 @@
-<a href="" class="list-group-item for-food">
+<li href="" class="list-group-item for-food">
   <% timeLeft = (food_item.expiration_date - Date.today).to_i %>
   <%if timeLeft > 30 %>
-      <span class="badge food-badge" style="background-color: #009900"><%=food_item.expiration_date%></span>
+      <div class="badge food-badge" style="background-color: #009900"><%=food_item.expiration_date%></div>
   <%elsif timeLeft > 7 && timeLeft <= 30 %>
-      <span class="badge food-badge" style="background-color: #44AA00"><%=timeLeft%> days left!</span>
+      <div class="badge food-badge" style="background-color: #44AA00"><%=timeLeft%> days left!</div>
   <%elsif timeLeft <= 7 && timeLeft > 3 %>
-      <span class="badge food-badge" style="background-color: #ddaa00"><%=timeLeft%> days left!</span>
+      <div class="badge food-badge" style="background-color: #ddaa00"><%=timeLeft%> days left!</div>
   <%else%>
-      <span class="badge food-badge" style="background-color: #990000"><%=timeLeft%> days left!</span>
+      <div class="badge food-badge" style="background-color: #990000">Expired <%=-timeLeft%> days ago</div>
   <%end%>
   <b><h4 class="list-group-item-heading <%= food_item.name %>"><%= food_item.name %> </h4></b>
-  <p style="margin-bottom: 0px;"><%= food_item.description %></p>
-</a>
+  <p style="margin-bottom: 0px;"><%= food_item.description %><span style="float:right; display: relative;"><%= link_to "remove", food_item, method: :delete, data: { confirm: "You sure?" } %></span></p>
+
+</li>

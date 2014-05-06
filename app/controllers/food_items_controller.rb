@@ -3,6 +3,12 @@ class FoodItemsController <  ApplicationController
 
   def food
     @fooditem = FoodItem.new
+    def new_page
+      render :partial => 'food_items/new'
+    end
+    def remove_page
+      render :partial => 'food_items/remove'
+    end
   end
   def new
     @fooditem = FoodItem.new
@@ -39,7 +45,23 @@ class FoodItemsController <  ApplicationController
   def index
     redirect_to '/users/food'
   end
-
+  def destroy
+    FoodItem.find(params[:id]).destroy
+    flash[:success] = "Food deleted."
+    redirect_to food_items_food_url
+  end
+  def new_food
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  def remove
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   private
   def food_item_from_params
     params.require(:food_item).permit(:name, :description, :calories, :expiration_date)

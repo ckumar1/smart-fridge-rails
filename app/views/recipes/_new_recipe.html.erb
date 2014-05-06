@@ -11,8 +11,7 @@
           <div class="panel-heading" style="height: 50px; background-color: #cccccc">
             <% @food_items = current_user.food_items %>
             <% selected_ingredients = "none" %>
-            <% if @food_items.any? %>
-                <h3 class="panel-title modal-list" style="padding-top: 6px; text-align: center;" ><i class="fa fa-cutlery fa-fw padIcon"></i>Ingredients (<%= selected_ingredients %>)</h3>
+                <h3 class="panel-title modal-list" style="padding-top: 6px; text-align: center;" ><i class="fa fa-cutlery fa-fw padIcon"></i>Ingredients <%if @food_items.any? %>(<%= selected_ingredients %>)</h3>
           </div>
                 <ul class="list-group scrollable-list little-recipe-list in-modal">
                   <% @food_items.each do |item| %>

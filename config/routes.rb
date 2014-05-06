@@ -6,6 +6,8 @@ SmartFridgeRails::Application.routes.draw do
   #get "static_pages/recipes"
   get "food_items/food"
   get "recipes/recipes"
+  get "food_items/new" => 'food_items#new_food', :as => :new_food
+  get "food_items/remove" => 'food_items#remove', :as => :remove_food
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
