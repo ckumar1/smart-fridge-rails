@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'API Sign-In Endpoint' do
 
   let(:valid_user) { create(:user) }
-  let(:hostname) { 'http://api.smartfridge.com' }
+  let(:hostname) { 'http://api.fridgepantry.com' }
 
   context 'for valid credentials' do
     before(:each) do
@@ -15,8 +15,6 @@ describe 'API Sign-In Endpoint' do
     its (:status) { should eq(200) }
     its (:body) { should_not be_nil }
     its (:content_type) { should eq(Mime::JSON)}
-
-
     its (:location) { should eq( user_url(valid_user.id ) )}
 
     context 'response body' do
