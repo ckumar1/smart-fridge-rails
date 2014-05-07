@@ -57,13 +57,15 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-# gem 'jbuilder'
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'font-awesome-sass'
 gem 'font-awesome-rails'
 gem 'simple_form'
 
-
+gem 'jbuilder'
+# gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'rabl'
+# Also add either `oj` or `yajl-ruby` as the JSON parser
+gem 'oj'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
