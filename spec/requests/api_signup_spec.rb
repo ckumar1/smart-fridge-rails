@@ -7,7 +7,7 @@ describe 'API Sign-Up Endpoint' do
   #
   #   ## /etc/hosts
   #   127.0.0.1 api.fridgepantry.com
-  let(:hostname) { 'http://api.fridgepantry.com' }
+  let(:hostname) { 'http://api.fridgepantry.com/api' }
 
   let(:valid_user) { build(:user) }
   let(:created_user) {User.find_by(email: valid_user.email)}

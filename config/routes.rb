@@ -29,7 +29,7 @@ SmartFridgeRails::Application.routes.draw do
   # API Routing
 
   # Authentication API routing
-  namespace :api, path: '/', constraints: {subdomain: 'api'} do
+  namespace :api do
     # Authenticate
     match 'access' => 'access#authenticate', via: :post
     # Register

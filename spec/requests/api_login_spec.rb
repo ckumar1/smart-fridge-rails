@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'API Sign-In Endpoint' do
 
   let(:valid_user) { create(:user) }
-  let(:hostname) { 'http://api.fridgepantry.com' }
+  let(:hostname) { 'http://fridgepantry.com/api' }
 
   context 'for valid credentials' do
     before(:each) do
