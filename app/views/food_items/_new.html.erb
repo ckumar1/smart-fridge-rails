@@ -1,5 +1,4 @@
-<div id="ajax-modal" class="modal fade">
-  <div class="modal-dialog">
+<div id="AddFoodModal">
     <div class="modal-content">
       <%= form_for (@fooditem) do |form| %>
       <form class="form-horizontal" role="form">
@@ -40,7 +39,7 @@
                   <div class="input-group">
                     <span class="input-group-addon passwordbox"><i class="fa fa-calendar fa-fw"></i></span>
                     <!-- <input class="form-control" type="password" placeholder="Password"> -->
-                    <%= form.date_field :expiration_date, :class => 'form-control', :placeholder => 'Expiration Date' %>
+                    <%= form.date_select :expiration_date, :class => 'form-control', :placeholder => 'Expiration Date' %>
                   </div>
                 </div>
               </div>
@@ -49,10 +48,9 @@
       </div>
       <div class='modal-footer'>
         <button type="button" data-dismiss="modal" class="btn">Close</button>
-        <%= form.submit :food_item, :class => 'btn btn-primary', :style => 'float: right;'%>
+        <%= form.submit :Add, :class => 'btn btn-primary', :style => 'float: right;'%>
       </div>
       </form>
         <%end%>
     </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div>

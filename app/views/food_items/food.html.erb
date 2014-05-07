@@ -1,27 +1,53 @@
 <% @user = current_user %>
 <% if @user %>
-    <% provide(:title, "#{@user.name}'s food") %>
+    <% provide(:title, "#{@user.name}s food") %>
 <% else %>
     <% provide(:title, "Food Items") %>
 <% end %>
-  <%= link_to '', data: { toggle: "modal", target: "#ajax-modal" } do%>
-    <div id="addFoodButton">
-    + <span class="showText">Add Food</span>
+<!-- The following ruby code prints how many expired items the user has.-->
+<% if @user && @user.food_items.any? %>
+    <% @expiredCounter = 0 %>
+    <% @user.food_items.each do |item| %>
+        <%if item.expiration_date < Date.today %>
+            <% @expiredCounter = @expiredCounter + 1 %>
+        <%end%>
+    <% end %>
+    <% if @expiredCounter > 0 %>
+        <div class="alert alert-error">You have <%=@expiredCounter%> expired foods!</div>
+    <%end%>
+<%end%>
+
+
+<% if !@user.food_items.any?%>
+<h3 style="text-align: center;">You have no Food! Add food by clicking the "+" button on the left and get started!</h3>
+    <%= link_to 'new',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-newFood'}  do%>
+        <div id="addFoodButton">
+          + <span class="showText">Add Food</span>
+        </div>
+    <%end%>
+    <div id="modal-window-newFood" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%=render 'food_items/new', partial: true %>
     </div>
-  <%end%>
-  <%= render 'food_items/new', partial: true %>
+
+<%else%>
+    <%= link_to 'new',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-newFood'}  do%>
+        <div id="addFoodButton">
+          + <span class="showText">Add Food</span>
+        </div>
+    <%end%>
+    <div id="modal-window-newFood" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%=render 'food_items/new', partial: true %>
+    </div>
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
     <div class="panel-heading">
-      <% if @user && @user.food_items.any? %>
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food (<%= @user.food_items.count %>)</h3>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Food <% if @user && @user.food_items.any? %>(<%= @user.food_items.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list food-list">
             <% @user.food_items.each do |item| %>
                 <%= render item %>
             <% end %>
           </ul>
-
       <% end %>
       </div>
 </div>
@@ -34,7 +60,7 @@
       <div class="col-md-2 food-image-box" style="margin: 10px 0px 0px 10px;">
 
       </div>
-      <div id="foodtext" class="col-md-6">
+      <div id="foodtext" class="col-md-8">
         <%= render 'food_items/show', :locals => @user.food_items unless @user.nil?%>
       </div>
     </div>
@@ -44,24 +70,28 @@
     // jQuery example
     $(document).ready(function () {
         //for setting active state to the list views
-        $('.list-group.scrollable-list.food-list').find('a').on('click', function(e) {
+
+        $('.list-group.scrollable-list.food-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.food-list a').removeClass('active');
+            $('.scrollable-list.food-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
+                var descriptionText = $(".for-food.active p").text()
+                var removeText = $(".for-food.active span").text()
                 $("#foodtext h2").text($(".for-food.active h4").text());
-                $("#foodtext h4").text($(".for-food.active p").text());
-                $("#foodtext span").text($(".for-food.active span").text());
-                var color = $(".for-food.active span").css( "background-color" );
-                $("#foodtext span").css("background-color",color);
-
-
+                $("#foodtext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#foodtext div").text($(".for-food.active div").text());
+                var color = $(".for-food.active div").css( "background-color" );
+                $("#foodtext div").css("background-color",color);
             }
 
 
         });
+
+
     });
 </script>
+<%end%>

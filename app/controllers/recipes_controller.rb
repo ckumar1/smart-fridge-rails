@@ -3,7 +3,9 @@ class RecipesController < ApplicationController
     @user = User.find(params[:id])
     @recipes = Recipe.find(params[:id])
   end
-
+  def new
+    @recipe = Recipe.new
+  end
   def create
     @recipe = Recipe.new(recipe_from_params)
 
@@ -12,20 +14,15 @@ class RecipesController < ApplicationController
     else
       flash[:notice => 'error'] = "Error: Could not create Recipe Item"
     end
-
+    redirect_back_or(recipes_recipes_path)
   end
-
+  def destroy
+    Recipe.find(params[:id]).destroy
+    flash[:success] = "Recipe deleted."
+    redirect_back_or recipes_recipes_path
+  end
   def recipe_from_params
-    recipe_params = params[:user_id]
-    name = recipe_params.delete(:name)
-    directions = recipe_params.delete(:directions)
-    notes = recipe_params.delete(:notes)
-
-    recipe_model.new(recipe_params).tap do |recipe|
-      recipe.name = name
-      recipe.directions = directions
-      recipe.notes = notes
-    end
+    params.require(:recipe).permit(:name, :directions, :notes, :ingredients)
   end
 
   def recipe_model

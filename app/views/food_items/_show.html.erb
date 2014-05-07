@@ -1,9 +1,10 @@
-<% if @fooditem == nil || @fooditem.name == nil %>
-    <span class="badge food-badge" style="float: right;"><%= %></span>
-    <b><h2 style="text-align: left; margin: 10px 0px;"><%=  %></h2></b>
-    <h4 style="text-align: left; margin: 10px 0px;"><%=  %></h4>
+<%if @food_item%>
+    <div class="badge food-badge" style="float: right;margin-top: 12px;"><%=@food_item.expiration_date%></div>
+    <b><h2 style="text-align: left; margin: 10px 0px;"><%= @food_item.name %></h2></b>
+    <h4 style="text-align: left; margin: 10px 0px;"><%= @food_item.description %></h4>
+
 <%else%>
-    <span class="badge food-badge"><%=food_item.expiration_date%></span>
-    <b><h2 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h2></b>
-    <h4 style="text-align: left; margin: 10px 0px;"><%= @fooditem.description %></h4>
+    <div class="badge food-badge" style="float: right;margin-top: 12px;"></div>
+    <b><h2 style="text-align: left; margin: 10px 0px;"></h2></b>
+    <h4 style="text-align: left; margin: 10px 0px;"></h4>
 <%end%>

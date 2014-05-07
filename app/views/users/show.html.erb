@@ -1,10 +1,4 @@
 <% provide(:title, @user.name) %>
-<div class="loginbut" style="text-align: center;">
-  <%= link_to edit_user_path, id:"Edit user" do %>
-      <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
-      Update your account!
-  <% end %>
-</div>
 <div class="row profile-bar"style="margin-left: 21.2%;">
   <aside class="span4">
     <section>
@@ -15,39 +9,45 @@
     </section>
   </aside>
 </div>
-
+<% if @user.food_items.any? %>
 <%= render 'food_items/list' %>
 
 <%= render 'food_items/view_food_item' %>
-
+<% else %>
+    <h4 style="text-align: center;">You have no Food! Click on the Food page to start adding to your Smart Fridge!</h4>
+<% end %>
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
         //for setting active state to the list views
        // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
-        $('.list-group.scrollable-list.little-food-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-food-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.little-food-list a').removeClass('active');
+            $('.scrollable-list.little-food-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
+                var descriptionText = $(".for-food.active p").text()
+                var removeText = $(".for-food.active span").text()
                 $("#foodtext h2").text($(".for-food.active h4").text());
-                $("#foodtext h4").text($(".for-food.active p").text());
-                $("#foodtext span").text($(".for-food.active span").text());
-                var color = $(".for-food.active span").css( "background-color" );
-                $("#foodtext span").css("background-color",color);
+                $("#foodtext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#foodtext div").text($(".for-food.active div").text());
+                var color = $(".for-food.active div").css( "background-color" );
+                $("#foodtext div").css("background-color",color);
             }
 
 
         });
     });
 </script>
+<% @recipe = Recipe.all %>
+<% if @user.recipes.any? or @recipe.any? %>
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
+    <% if @user.recipes.any? and !@recipe.any? %>
     <div class="panel-heading">
-      <% if @user.recipes.any? %>
           <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list little-recipe-list">
@@ -55,8 +55,28 @@
                 <%= render item %>
             <% end %>
           </ul>
-
+    <%elsif !@user.recipes.any? and @recipe.any?%>
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+    </div>
+       <ul class="list-group scrollable-list little-recipe-list">
+      <% @recipe.each do |item| %>
+          <%= render item %>
       <% end %>
+       </ul>
+    <%elsif @recipe.any? and @user.recipe.any?%>
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipe.count %>)</h3>
+        </div>
+        <ul class="list-group scrollable-list little-recipe-list">
+          <% @recipe.each do |item| %>
+              <%= render item %>
+          <% end %>
+          <% @user.recipes.each do |item| %>
+              <%= render item %>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 </div>
 <div class="half-section col-md-4" style="padding-right: 20px;">
@@ -74,6 +94,11 @@
     </div>
   </div>
 </div>
+<%else%>
+    <div class="section col-md-4">
+      <h4 style="text-align: center;">You have no Recipes! Click on the Recipes Page to create recipes!</h4>
+    </div>
+<%end%>
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
@@ -81,10 +106,10 @@
 //        $("#recipetext h4").text($(".for-recipe.active p").text());
         //for setting active state to the list views
         // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
-        $('.list-group.scrollable-list.little-recipe-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-recipe-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.little-recipe-list a').removeClass('active');
+            $('.scrollable-list.little-recipe-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item

@@ -3,13 +3,18 @@ class FoodItemsController <  ApplicationController
 
   def food
     @fooditem = FoodItem.new
+    def new_page
+      render :partial => 'food_items/new'
+    end
+    def remove_page
+      render :partial => 'food_items/remove'
+    end
   end
   def new
     @fooditem = FoodItem.new
   end
   def show
-    @user = User.find(params[:id])
-    @food_items = @user.food_items
+    @fooditem = FoodItem.find(params[:id])
   end
   def create
       @fooditem = current_user.food_items.build(food_item_from_params)
@@ -39,7 +44,23 @@ class FoodItemsController <  ApplicationController
   def index
     redirect_to '/users/food'
   end
-
+  def destroy
+    FoodItem.find(params[:id]).destroy
+    flash[:success] = "Food deleted."
+    redirect_back_or food_items_food_path
+  end
+  def new_food
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  def remove
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   private
   def food_item_from_params
     params.require(:food_item).permit(:name, :description, :calories, :expiration_date)

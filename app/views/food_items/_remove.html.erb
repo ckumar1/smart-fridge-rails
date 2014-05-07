@@ -1,0 +1,47 @@
+<div id="RemoveFoodModal">
+    <div class="modal-content">
+      <div class="modal-header food-title">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="text-shadow: none; font-size: 30px; opacity: .8; color:white;">&times;</button>              <h4 class="modal-title">Remove Food</h4>
+      </div>
+      <div class="panel panel-default" style="margin-top: 4px; margin-bottom: 10px;">
+        <div class="panel-heading" style="height: 50px; background-color: #cccccc">
+          <% @food_items = current_user.food_items %>
+          <% selected_ingredients = "none" %>
+          <% if @food_items.any? %>
+              <h3 class="panel-title modal-list" style="padding-top: 6px; text-align: center;" ><i class="fa fa-cutlery fa-fw padIcon"></i># of items to be removed: (<%= selected_ingredients %>)</h3>
+              </div>
+              <ul class="list-group scrollable-list recipe-list in-modal">
+                <% @food_items.each do |item| %>
+                    <%= render item %>
+                <% end %>
+              </ul>
+          <% end %>
+       </div>
+
+      <script type="text/javascript">
+          //counts selected ingrdients
+          var selected = 0;
+          var ingredients_selected = "";
+          var icon = "<i class=\"fa fa-cutlery fa-fw padIcon\"></i>";
+          $(document).ready(function () {
+
+              $('.list-group.scrollable-list.recipe-list.in-modal').find('a').on('click', function(e) {
+                  event.preventDefault();
+                  if($(this).hasClass('active')){
+                      $(this).removeClass('active');
+                      selected--;
+                  }
+                  else{
+                      $(this).addClass('active');
+                      selected++;
+                  }
+                  $(".panel-title.modal-list").text('');
+                  $(".panel-title.modal-list").append(icon + '# of items to be removed: (' + selected + ')');
+                  ingredients_selected = $(".for-food.active h4").text() + " ";
+
+
+              });
+          });
+      </script>
+    </div><!-- /.modal-content -->
+</div>

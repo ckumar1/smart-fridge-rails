@@ -378,7 +378,24 @@ a.pull-left {
   @include border-top-right-radius(4px);
   @include box-shadow(rgba(34,34,34,0.4), 0px, 2px, 4px);
 }
-
+#removeFoodButton{
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-top: 80px;
+  background-color: $active-state-color;
+  position: fixed;
+  color: white;
+  font-size: 36px;
+  padding-left: 16px;
+  padding-bottom: 15px;
+  line-height: 1.428571429;
+  font-family: 'Raleway','Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  z-index: 90;
+  @include border-bottom-right-radius(4px);
+  @include border-top-right-radius(4px);
+  @include box-shadow(rgba(34,34,34,0.4), 0px, 2px, 4px);
+}
 #addFoodButton:hover{
   span{
       position: fixed;
@@ -407,8 +424,32 @@ a.pull-left {
   hieght: 60px;
   @include transition(.3s);
 }
+
+#removeFoodButton:hover{
+  span{
+    position: fixed;
+    font-size: 18px;
+    padding-left: 12px;
+    padding-top: 12px;
+    color: white;
+    @include transition(.3s);
+  }
+  background-color: rgba(44,44,44,0.9);
+  width: 188px;
+  hieght: 60px;
+  @include transition(.3s);
+}
+#AddFoodModal,
+#RemoveFoodModal{
+  height: 600px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
 #addFoodButton:not(:hover),
-#addRecipeButton:not(:hover){
+#addRecipeButton:not(:hover),
+#removeFoodButton:not(:hover){
   span{
     position: absolute;
     font-size: 18px;
@@ -427,7 +468,7 @@ a.pull-left {
 }
 .modal-dialog.recipe-dialog{
   height: 412px;
-  width: 800px;
+  width: 400px;
 }
 
 .modal-header.food-title{
@@ -445,7 +486,7 @@ a.pull-left {
   display: inline-block;
   min-width: 10px;
   padding: 4px 8px;
-  margin-top: 12px;
+  margin-top: 2px;
   font-size: 14px;
   font-weight: normal;
   color: white;
@@ -457,7 +498,7 @@ a.pull-left {
   border-radius: 4px;
 }
 
-a.list-group-item.active > .badge{
+li.list-group-item.active > .badge{
   color: white;
 }
 .in-modal {
@@ -474,7 +515,7 @@ a.list-group-item.active > .badge{
   margin-top: 5px;
 }
 
-a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+li.list-group-item.active, li.list-group-item.active:hover, li.list-group-item.active:focus {
   background-color: #555555;
   color: white;
   border-color: #555555;
