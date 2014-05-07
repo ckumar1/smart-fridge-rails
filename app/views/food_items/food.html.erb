@@ -79,8 +79,10 @@
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
+                var descriptionText = $(".for-food.active p").text()
+                var removeText = $(".for-food.active span").text()
                 $("#foodtext h2").text($(".for-food.active h4").text());
-                $("#foodtext h4").text($(".for-food.active p").text());
+                $("#foodtext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
                 $("#foodtext div").text($(".for-food.active div").text());
                 var color = $(".for-food.active div").css( "background-color" );
                 $("#foodtext div").css("background-color",color);

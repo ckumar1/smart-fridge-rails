@@ -1,7 +1,9 @@
 <% if @fooditem == nil or @fooditem.name == nil %>
     <div class="badge food-badge" style="float: right;margin-top: 12px;"><%= %></div>
+    <h5 style="float: right;"></h5>
     <b><h2 style="text-align: left; margin: 10px 0px;"><%=  %></h2></b>
     <h4 style="text-align: left; margin: 10px 0px;"><%=  %></h4>
+
 <%else%>
     <div class="badge food-badge"><%=food_item.expiration_date%></div>
     <b><h2 style="text-align: left; margin: 10px 0px;"><%= @fooditem %></h2></b>

@@ -14,16 +14,30 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="<%= 'active' if current_page?(food_items_food_path)%>">
-        <%= link_to food_items_food_path, id: "Food" do %>
+        <%if !current_user%>
+            <%= link_to root_path, id: "Food" do %>
+                <i class="fa fa-cutlery fa-fw space-icon-out" ></i>
+                Food
+            <% end %>
+        <%else%>
+            <%= link_to food_items_food_path, id: "Food" do %>
              <i class="fa fa-cutlery fa-fw space-icon-out" ></i>
                     Food
                   <% end %>
+        <%end%>
       </li>
       <li class="<%= 'active' if current_page?(recipes_recipes_path)%>">
-        <%= link_to recipes_recipes_path, id: "Recipes" do %>
-            <i class="fa fa-book fa-fw space-icon-out" ></i>
-            Recipes
-        <% end %>
+        <%if !current_user%>
+            <%= link_to root_path, id: "Recipes" do %>
+                <i class="fa fa-book fa-fw space-icon-out" ></i>
+                Recipes
+            <% end %>
+        <%else%>
+            <%= link_to recipes_recipes_path, id: "Recipes" do %>
+                <i class="fa fa-book fa-fw space-icon-out" ></i>
+                Recipes
+            <% end %>
+        <%end%>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-fw space-icon-out"></i>

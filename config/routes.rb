@@ -26,8 +26,7 @@ SmartFridgeRails::Application.routes.draw do
   match 'food_items' => 'foods#create', :via => :post
 
   # Recipe Routing
-  resources :recipes, controller: 'recipes'
-
+  resources :recipes, controller: 'recipes', only: [:create, :destroy]
   # API Routing
 
   # Authentication API routing
