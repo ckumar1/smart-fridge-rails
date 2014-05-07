@@ -61,6 +61,7 @@
 
       </div>
       <div id="foodtext" class="col-md-8">
+        <%@food_item = FoodItem.find(1)%>
         <%= render 'food_items/show', :locals => @user.food_items unless @user.nil?%>
       </div>
     </div>
