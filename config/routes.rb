@@ -67,9 +67,6 @@ SmartFridgeRails::Application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
-  # delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
-
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
