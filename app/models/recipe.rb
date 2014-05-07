@@ -1,9 +1,16 @@
 class Recipe < ActiveRecord::Base
-  belongs_to :user
 
-  default_scope -> { order('name ASC') }
+  # Validations
   validates :name, presence: true, length: { maximum: 80 }
-  #validates :user_id, presence: true
   validates :directions, presence: true
-  validates :ingredients, presence:true
+
+  # Relationships
+  belongs_to :user
+  has_many :ingredients, dependent: :destroy
+
+  # Scopes
+  default_scope -> { order('name ASC') }
+
+
+
 end
