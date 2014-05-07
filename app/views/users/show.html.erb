@@ -25,19 +25,19 @@
     $(document).ready(function () {
         //for setting active state to the list views
        // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
-        $('.list-group.scrollable-list.little-food-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-food-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.little-food-list a').removeClass('active');
+            $('.scrollable-list.little-food-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
                 $("#foodtext h2").text($(".for-food.active h4").text());
                 $("#foodtext h4").text($(".for-food.active p").text());
-                $("#foodtext span").text($(".for-food.active span").text());
-                var color = $(".for-food.active span").css( "background-color" );
-                $("#foodtext span").css("background-color",color);
+                $("#foodtext div").text($(".for-food.active div").text());
+                var color = $(".for-food.active div").css( "background-color" );
+                $("#foodtext div").css("background-color",color);
             }
 
 
@@ -79,10 +79,10 @@
 //        $("#recipetext h4").text($(".for-recipe.active p").text());
         //for setting active state to the list views
         // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
-        $('.list-group.scrollable-list.little-recipe-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.little-recipe-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.little-recipe-list a').removeClass('active');
+            $('.scrollable-list.little-recipe-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item

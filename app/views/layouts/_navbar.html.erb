@@ -38,10 +38,10 @@
                 Notifications
             <% end %>
           </li>
-          <li><%= link_to new_password_path, id:"Change Password" do %>
+          <li><%= link_to edit_user_url(current_user), id:"Edit user" do %>
                 <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
-                Change Password
-              <% end %>
+                Update your account!
+            <% end %>
           </li>
           <!-- <li><a href="main.html">Something else here</a></li>
           <li class="divider"></li>
