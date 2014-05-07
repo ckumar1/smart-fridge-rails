@@ -15,11 +15,13 @@
     </section>
   </aside>
 </div>
-
+<% if @user.food_items.any? %>
 <%= render 'food_items/list' %>
 
 <%= render 'food_items/view_food_item' %>
-
+<% else %>
+    <h4 style="text-align: center;">You have no Food! Click on the Food page to start adding to your Smart Fridge!</h4>
+<% end %>
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {
@@ -44,17 +46,41 @@
         });
     });
 </script>
+<% @recipe = Recipe.all %>
+<% if @user.recipes.any? or @recipe.any? %>
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
+    <% if @user.recipes.any? and !@recipe.any? %>
     <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes <% if @user.recipes.any? %>(<%= @user.recipes.count %>)</h3>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list little-recipe-list">
             <% @user.recipes.each do |item| %>
                 <%= render item %>
-          </ul>
             <% end %>
+          </ul>
+    <%elsif !@user.recipes.any? and @recipe.any?%>
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+    </div>
+       <ul class="list-group scrollable-list little-recipe-list">
+      <% @recipe.each do |item| %>
+          <%= render item %>
       <% end %>
+       </ul>
+    <%elsif @recipe.any? and @user.recipe.any?%>
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipe.count %>)</h3>
+        </div>
+        <ul class="list-group scrollable-list little-recipe-list">
+          <% @recipe.each do |item| %>
+              <%= render item %>
+          <% end %>
+          <% @user.recipes.each do |item| %>
+              <%= render item %>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 </div>
 <div class="half-section col-md-4" style="padding-right: 20px;">
@@ -72,6 +98,9 @@
     </div>
   </div>
 </div>
+<%else%>
+    <h4 style="text-align: center;">You have no Recipes! Click on the Recipes Page to create recipes!</h4>
+<%end%>
 <script type="text/javascript">
     // jQuery example
     $(document).ready(function () {

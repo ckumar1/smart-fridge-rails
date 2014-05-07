@@ -1,4 +1,15 @@
+<% @recipe = Recipe.all %>
+<% if !@recipe.any? or !current_user.recipes.any?%>
+<h3 style="text-align: center;">You have no Recipes! Click on "+" button to create recipes!</h3>
+    <%= link_to 'recipes/new_recipe', data: { toggle: "modal", target: "#ajax-modal" } do%>
+        <div id="addRecipeButton">
+          + <span class="showText">Add Recipe</span>
+        </div>
+    <%end%>
 
+    <%= render 'recipes/new_recipe' %>
+
+<%else%>
 <%= link_to 'recipes/new_recipe', data: { toggle: "modal", target: "#ajax-modal" } do%>
     <div id="addRecipeButton">
       + <span class="showText">Add Recipe</span>
@@ -10,8 +21,7 @@
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <% @recipe = Recipe.all %>
-      <% if @recipe.any? %>
+      <% if @recipe.any? or current_user.recipes.any?%>
           <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
           </div>
           <ul class="list-group scrollable-list recipe-list">
@@ -19,9 +29,8 @@
                 <%= render item %>
             <% end %>
           </ul>
-
       <% end %>
-      </div>
+  </div>
 </div>
 <div class="half-section col-md-5 service">
   <div class="panel panel-default">
@@ -45,10 +54,10 @@
         $("#recipetext h4").text($(".for-recipe.active p").text());
         //for setting active state to the list views
         // $('.list-group.scrollable-list.little-food-list').find('a').addClass('active');
-        $('.list-group.scrollable-list.recipe-list').find('a').on('click', function(e) {
+        $('.list-group.scrollable-list.recipe-list').find('li').on('click', function(e) {
             event.preventDefault();
 
-            $('.scrollable-list.recipe-list a').removeClass('active');
+            $('.scrollable-list.recipe-list li').removeClass('active');
             $(this).addClass('active');
 
             //for a selected item, the view food div should have the text of the selected item
@@ -61,3 +70,4 @@
         });
     });
 </script>
+<%end%>

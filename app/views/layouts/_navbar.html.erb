@@ -38,11 +38,13 @@
                 Notifications
             <% end %>
           </li>
+          <%if current_user%>
           <li><%= link_to edit_user_url(current_user), id:"Edit user" do %>
                 <i class="fa fa-pencil-square fa-fw space-icon-out" ></i>
                 Update your account!
             <% end %>
           </li>
+          <%end%>
           <!-- <li><a href="main.html">Something else here</a></li>
           <li class="divider"></li>
           <li><a href="main.html">Separated link</a></li>

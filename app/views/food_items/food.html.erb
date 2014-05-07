@@ -19,7 +19,7 @@
 
 
 <% if !@user.food_items.any?%>
-<h3 style="text-align: center;">You have no Food! Add some by clicking the "+" button on the left and get started!</h3>
+<h3 style="text-align: center;">You have no Food! Add food by clicking the "+" button on the left and get started!</h3>
     <%= link_to 'new',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-newFood'}  do%>
         <div id="addFoodButton">
           + <span class="showText">Add Food</span>
@@ -29,14 +29,6 @@
       <%=render 'food_items/new', partial: true %>
     </div>
 
-    <%= link_to 'remove',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-remove'}  do%>
-        <div id="removeFoodButton">
-          - <span class="showText">Remove Foods</span>
-        </div>
-    <%end%>
-    <div id="modal-window-remove" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <%=render 'food_items/remove', partial: true %>
-    </div>
 <%else%>
     <%= link_to 'new',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-newFood'}  do%>
         <div id="addFoodButton">
@@ -45,15 +37,6 @@
     <%end%>
     <div id="modal-window-newFood" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <%=render 'food_items/new', partial: true %>
-    </div>
-
-    <%= link_to 'remove',  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-remove'}  do%>
-        <div id="removeFoodButton">
-          - <span class="showText">Remove Foods</span>
-        </div>
-    <%end%>
-    <div id="modal-window-remove" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <%=render 'food_items/remove', partial: true %>
     </div>
 <div class="half-section col-sm-offset-1 col-md-5 service">
   <div class="panel panel-default ">
