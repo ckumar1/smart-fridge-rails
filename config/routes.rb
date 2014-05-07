@@ -12,16 +12,36 @@ SmartFridgeRails::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
-  resources :users, controller: 'users'
+
+  # Static Pages Routing
   resources :static_pages, controller: 'static_pages'
+
+  # User Routing
+  resources :users, controller: 'users'
+
+  # Food Item Routing
   resources :food_items, controller: 'food_items', only: [:create, :edit, :update, :destroy]
   match 'food_items' => 'foods#create', :via => :post
+
+  # Recipe Routing
   resources :recipes, controller: 'recipes'
+
+  # API Routing
+
+  # Authentication API routing
+  namespace :api, path: '/', constraints: {subdomain: 'api'} do
+    # Authenticate
+    match 'access' => 'access#authenticate', via: :post
+    # Register
+    resources :users, only: [:create]
+    match 'access/new' => 'users#create', via: :post
+
+  end
 
   # Clearance endpoints available for rerouting if needed
   #   reroute clearance endpoints to use our custom controllers
 
-  #resources :passwords,z
+  #resources :passwords,
   #          controller: 'clearance/passwords',
   #          only: [:create, :new]
   #
@@ -50,9 +70,6 @@ SmartFridgeRails::Application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
-  # delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
