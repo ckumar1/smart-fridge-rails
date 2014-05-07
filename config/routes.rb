@@ -30,8 +30,12 @@ SmartFridgeRails::Application.routes.draw do
 
   # Authentication API routing
   namespace :api, path: '/', constraints: {subdomain: 'api'} do
+    # Authenticate
     match 'access' => 'access#authenticate', via: :post
-    match 'access/new' => 'access#signup', via: :post
+    # Register
+    resources :users, only: [:create]
+    match 'access/new' => 'users#create', via: :post
+
   end
 
   # Clearance endpoints available for rerouting if needed
