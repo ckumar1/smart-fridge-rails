@@ -14,8 +14,7 @@ class FoodItemsController <  ApplicationController
     @fooditem = FoodItem.new
   end
   def show
-    @user = User.find(params[:id])
-    @food_items = @user.food_items
+    @fooditem = FoodItem.find(params[:id])
   end
   def create
       @fooditem = current_user.food_items.build(food_item_from_params)

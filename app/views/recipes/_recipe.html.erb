@@ -1,4 +1,4 @@
 <li href="" class="list-group-item for-recipe">
   <b><h4 class="list-group-item-heading" id="recipe-<%= recipe.id %>"><%= recipe.name %></h4></b>
-  <p class="list-group-item-text recipe-ingredients"><%= recipe.directions %><span class="removal-button" style="float:right; display: relative;"><%= link_to "remove", recipe, method: :delete, data: { confirm: "You sure?" } %></span></p>
+  <p class="list-group-item-text recipe-ingredients"><%= recipe.directions %><span class="removal-button" style="float:right; display: relative;"><%= link_to "remove", recipe, method: :delete, data: { confirm: "You sure? You will be redirected to your Recipes page after removal!" } %></span></p>
 </li>
