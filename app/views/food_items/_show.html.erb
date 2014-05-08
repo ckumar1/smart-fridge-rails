@@ -1,8 +1,21 @@
 <%if @food_item%>
-    <div class="badge food-badge" style="float: right;margin-top: 12px;"><%=@food_item.expiration_date%></div>
-    <b><h2 style="text-align: left; margin: 10px 0px;"><%= @food_item.name %></h2></b>
-    <h4 style="text-align: left; margin: 10px 0px;"><%= @food_item.description %></h4>
-
+    <% timeLeft = (@food_item.expiration_date - Date.today).to_i %>
+    <%if timeLeft > 30 %>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #009900"><%=@food_item.expiration_date%></div>
+    <%elsif timeLeft > 7 && timeLeft <= 30 %>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #44AA00"><%=timeLeft%> days left!</div>
+    <%elsif timeLeft <= 7 && timeLeft > 3 %>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #ddaa00"><%=timeLeft%> days left!</div>
+    <%elsif timeLeft == 0 %>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #990000">Expires today!</div>
+    <%elsif timeLeft == 1 %>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #990000">1 day left!</div>
+    <%else%>
+        <div class="badge food-badge" style="float: right;margin-top: 18px;background-color: #990000">Expired <%=-timeLeft%> days ago</div>
+    <%end%>
+    <b><h2 style="text-align: left; margin: 12px 0px 0px 0px;"><%= @food_item.name %></h2></b>
+    <h4 style="text-align: left; margin: 6px 0px;"><%= @food_item.description %></h4>
+    <span class="Calories" style="text-align: left; margin: 6px 0px;"> Calories: <%= @food_item.calories %> </span>
 <%else%>
     <div class="badge food-badge" style="float: right;margin-top: 12px;"></div>
     <b><h2 style="text-align: left; margin: 10px 0px;"></h2></b>

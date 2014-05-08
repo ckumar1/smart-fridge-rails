@@ -1,10 +1,10 @@
-<% @recipe = Recipe.all %>
+<% @recipes = Recipe.all %>
 <% @user = current_user %>
 
-<% if @user.recipes.any? or @recipe.any? %>
+<% if @user.recipes.any? or @recipes.any? %>
     <div class="half-section col-sm-offset-1 col-md-5 service">
       <div class="panel panel-default">
-        <% if @user.recipes.any? and !@recipe.any? %>
+        <% if @user.recipes.any? and !@recipes.any? %>
             <div class="panel-heading">
               <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
             </div>
@@ -13,21 +13,21 @@
                   <%= render item %>
               <% end %>
             </ul>
-        <%elsif !@user.recipes.any? and @recipe.any?%>
+        <%elsif !@user.recipes.any? and @recipes.any?%>
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+              <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipes.count %>)</h3>
             </div>
             <ul class="list-group scrollable-list recipe-list">
-              <% @recipe.each do |item| %>
+              <% @recipes.each do |item| %>
                   <%= render item %>
               <% end %>
             </ul>
-        <%elsif @recipe.any? and @user.recipe.any?%>
+        <%elsif @recipes.any? and @user.recipes.any?%>
             <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipe.count %>)</h3>
+              <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipes.count %>)</h3>
             </div>
             <ul class="list-group scrollable-list recipe-list">
-              <% @recipe.each do |item| %>
+              <% @recipes.each do |item| %>
                   <%= render item %>
               <% end %>
               <% @user.recipes.each do |item| %>

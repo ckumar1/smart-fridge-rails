@@ -30,23 +30,25 @@
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
                 var descriptionText = $(".for-food.active p").text()
-                var removeText = $(".for-food.active span").text()
+                var removeText = $(".for-food.active .removal-button").text();
+                var caloriesText = $(".for-food.active .Calories").text();
                 $("#foodtext h2").text($(".for-food.active h4").text());
-                $("#foodtext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#foodtext h4").text(descriptionText.substring(0,(descriptionText.length-removeText.length)));
                 $("#foodtext div").text($(".for-food.active div").text());
                 var color = $(".for-food.active div").css( "background-color" );
                 $("#foodtext div").css("background-color",color);
+                $("#foodtext .Calories").text(caloriesText);
             }
 
 
         });
     });
 </script>
-<% @recipe = Recipe.all %>
-<% if @user.recipes.any? or @recipe.any? %>
+<% @recipes = Recipe.all %>
+<% if @user.recipes.any? or @recipes.any? %>
 <div class="half-section col-md-4 little-margins" style="margin-left: 20%;">
   <div class="panel panel-default little-panel">
-    <% if @user.recipes.any? and !@recipe.any? %>
+    <% if @user.recipes.any? and !@recipes.any? %>
     <div class="panel-heading">
           <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count %>)</h3>
           </div>
@@ -55,21 +57,21 @@
                 <%= render item %>
             <% end %>
           </ul>
-    <%elsif !@user.recipes.any? and @recipe.any?%>
+    <%elsif !@user.recipes.any? and @recipes.any?%>
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipe.count %>)</h3>
+      <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @recipes.count %>)</h3>
     </div>
        <ul class="list-group scrollable-list little-recipe-list">
-      <% @recipe.each do |item| %>
+      <% @recipes.each do |item| %>
           <%= render item %>
       <% end %>
        </ul>
-    <%elsif @recipe.any? and @user.recipe.any?%>
+    <%elsif @recipes.any? and @user.recipes.any?%>
         <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipe.count %>)</h3>
+          <h3 class="panel-title"><i class="fa fa-cutlery fa-fw padIcon"></i>Recipes (<%= @user.recipes.count + @recipes.count %>)</h3>
         </div>
         <ul class="list-group scrollable-list little-recipe-list">
-          <% @recipe.each do |item| %>
+          <% @recipes.each do |item| %>
               <%= render item %>
           <% end %>
           <% @user.recipes.each do |item| %>
@@ -114,8 +116,10 @@
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
-                $("#recipetext h2").text($(".for-recipe.active h4").text());
-                $("#recipetext h4").text($(".for-recipe.active p").text());
+              var descriptionText = $(".for-recipe.active p").text()
+              var removeText = $(".for-recipe.active span").text()
+              $("#recipetext h2").text($(".for-recipe.active h4").text());
+              $("#recipetext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
             }
 
 

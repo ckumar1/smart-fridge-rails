@@ -6,7 +6,8 @@
           </div>
           <ul class="list-group scrollable-list little-food-list">
             <% @user.food_items.each do |item| %>
-                <%= render item %>
+                <% @food_item = item %>
+                <%= render 'food_items/food_item', :locals => { :food_item => @food_item } %>
             <% end %>
           </ul>
       <% end %>
