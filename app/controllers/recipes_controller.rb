@@ -3,9 +3,11 @@ class RecipesController < ApplicationController
     @user = User.find(params[:id])
     @recipes = Recipe.find(params[:id])
   end
+
   def new
     @recipe = Recipe.new
   end
+
   def create
     @recipe = Recipe.new(recipe_from_params)
 
@@ -16,17 +18,15 @@ class RecipesController < ApplicationController
     end
     redirect_back_or(recipes_recipes_path)
   end
+
   def destroy
     Recipe.find(params[:id]).destroy
     flash[:success] = "Recipe deleted."
     redirect_back_or recipes_recipes_path
   end
-  def recipe_from_params
-    params.require(:recipe).permit(:name, :directions, :notes, :ingredients)
-  end
 
-  def recipe_model
-    @recipe_model || ::Recipe
+  def recipe_from_params
+    params.require(:recipe).permit(:name, :directions, :notes)
   end
 
 end
