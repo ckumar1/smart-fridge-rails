@@ -6,7 +6,7 @@ class Recipe < ActiveRecord::Base
 
   # Relationships
   belongs_to :user
-  has_many :ingredients, dependent: :destroy
+  has_many :ingredients, dependent: :destroy, validate: true
 
   # Scopes
   default_scope -> { order('name ASC') }
