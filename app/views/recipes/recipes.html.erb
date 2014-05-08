@@ -46,8 +46,8 @@
           <div class="col-md-2 recipe-image-box" style="margin: 10px 0px 0px 10px;">
 
           </div>
-          <div id="recipetext" class="col-md-6">
-            <%= render 'recipes/show', :locals => @user.recipes%>
+          <div id="recipetext" class="col-md-12" style="position: absolute;">
+            <%= render 'recipes/show', :locals => { :recipe => @user.recipes }%>
           </div>
         </div>
       </div>
@@ -72,10 +72,15 @@
 
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
-                var descriptionText = $(".for-recipe.active p").text()
-                var removeText = $(".for-recipe.active span").text()
+                var descriptionText = $(".for-recipe.active .little-recipe-directions").text()
+                var removeText = $(".for-recipe.active .removal-button").text()
+                var ingredientsText = $(".for-recipe.active .Ingredients").text()
+                var notesText = $(".for-recipe.active .Notes").text()
                 $("#recipetext h2").text($(".for-recipe.active h4").text());
-                $("#recipetext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#recipetext .linebar").html("<hr>");
+                $("#recipetext .recipe-directions").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#recipetext .Ingredients").text(ingredientsText);
+                $("#recipetext .Notes").text(notesText);
             }
 
 
