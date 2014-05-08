@@ -45,7 +45,8 @@
           </div>
           <ul class="list-group scrollable-list food-list">
             <% @user.food_items.each do |item| %>
-                <%= render item %>
+                <% @food_item = item %>
+                <%= render 'food_items/food_item', :locals => { :food_item => @food_item } %>
             <% end %>
           </ul>
       <% end %>
@@ -61,7 +62,7 @@
 
       </div>
       <div id="foodtext" class="col-md-8">
-        <%= render 'food_items/show', :locals => @user.food_items unless @user.nil?%>
+        <%= render 'food_items/show', :locals => { :food_item => @food_item } %>
       </div>
     </div>
   </div>
@@ -80,12 +81,14 @@
             //for a selected item, the view food div should have the text of the selected item
             if($(this).hasClass('active')){
                 var descriptionText = $(".for-food.active p").text()
-                var removeText = $(".for-food.active span").text()
+                var removeText = $(".for-food.active .removal-button").text();
+                var caloriesText = $(".for-food.active .Calories").text();
                 $("#foodtext h2").text($(".for-food.active h4").text());
-                $("#foodtext h4").text(descriptionText.substring(0,descriptionText.length-removeText.length));
+                $("#foodtext h4").text(descriptionText.substring(0,(descriptionText.length-removeText.length)));
                 $("#foodtext div").text($(".for-food.active div").text());
                 var color = $(".for-food.active div").css( "background-color" );
                 $("#foodtext div").css("background-color",color);
+                $("#foodtext .Calories").text(caloriesText);
             }
 
 
